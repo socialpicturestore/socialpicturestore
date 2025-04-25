@@ -4,7 +4,7 @@ const StripeSvgrepoCom4 = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElemen
   <svg xmlns="http://www.w3.org/2000/svg" width={24} height={16} fill="none" ref={ref} {...props}>
     <g clipPath="url(#StripeSvgrepoCom4_svg__a)">
       <path
-        fill="#fff"
+        fill="currentColor"
         stroke="#F3F3F3"
         d="M1.913.5h20.174c.79 0 1.413.624 1.413 1.372v12.256c0 .748-.623 1.372-1.413 1.372H1.913C1.123 15.5.5 14.876.5 14.128V1.872C.5 1.124 1.123.5 1.913.5Z"
       />
@@ -17,7 +17,7 @@ const StripeSvgrepoCom4 = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElemen
     </g>
     <defs>
       <clipPath id="StripeSvgrepoCom4_svg__a">
-        <path fill="#fff" d="M0 0h24v16H0z" />
+        <path fill="currentColor" d="M0 0h24v16H0z" />
       </clipPath>
     </defs>
   </svg>

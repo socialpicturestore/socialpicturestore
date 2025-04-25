@@ -22,7 +22,7 @@ const GoogleSvgrepoCom1 = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElemen
     </g>
     <defs>
       <clipPath id="GoogleSvgrepoCom1_svg__a">
-        <path fill="#fff" d="M0 0h24v24H0z" />
+        <path fill="currentColor" d="M0 0h24v24H0z" />
       </clipPath>
     </defs>
   </svg>

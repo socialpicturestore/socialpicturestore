@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 import { Ref, forwardRef, memo } from 'react'
-const SvgCreditCard = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+const CreditCard = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" ref={ref} {...props}>
     <g clipPath="url(#CreditCard_svg__a)">
       <path
@@ -15,6 +15,6 @@ const SvgCreditCard = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) 
     </defs>
   </svg>
 )
-const ForwardRef = forwardRef(SvgCreditCard)
+const ForwardRef = forwardRef(CreditCard)
 const Memo = memo(ForwardRef)
 export default Memo

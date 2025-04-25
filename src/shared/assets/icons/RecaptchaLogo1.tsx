@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 import { Ref, forwardRef, memo } from 'react'
-const SvgRecaptchaLogo1 = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+const RecaptchaLogo1 = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" ref={ref} {...props}>
     <path
       fill="#1C3AA9"
@@ -20,6 +20,6 @@ const SvgRecaptchaLogo1 = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElemen
     />
   </svg>
 )
-const ForwardRef = forwardRef(SvgRecaptchaLogo1)
+const ForwardRef = forwardRef(RecaptchaLogo1)
 const Memo = memo(ForwardRef)
 export default Memo

@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 import { Ref, forwardRef, memo } from 'react'
-const SvgFlagRussia = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+const FlagRussia = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -25,6 +25,6 @@ const SvgFlagRussia = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) 
     </defs>
   </svg>
 )
-const ForwardRef = forwardRef(SvgFlagRussia)
+const ForwardRef = forwardRef(FlagRussia)
 const Memo = memo(ForwardRef)
 export default Memo

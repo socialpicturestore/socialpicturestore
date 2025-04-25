@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 import { Ref, forwardRef, memo } from 'react'
-const SvgPin = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+const Pin = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" ref={ref} {...props}>
     <g fill="#000" clipPath="url(#Pin_svg__a)">
       <path d="M12 11a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
@@ -13,6 +13,6 @@ const SvgPin = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
     </defs>
   </svg>
 )
-const ForwardRef = forwardRef(SvgPin)
+const ForwardRef = forwardRef(Pin)
 const Memo = memo(ForwardRef)
 export default Memo

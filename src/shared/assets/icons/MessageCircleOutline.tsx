@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 import { Ref, forwardRef, memo } from 'react'
-const SvgMessageCircleOutline = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+const MessageCircleOutline = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" ref={ref} {...props}>
     <g fill="#000" clipPath="url(#MessageCircleOutline_svg__a)">
       <path d="M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2M16 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2M8 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
@@ -13,6 +13,6 @@ const SvgMessageCircleOutline = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVG
     </defs>
   </svg>
 )
-const ForwardRef = forwardRef(SvgMessageCircleOutline)
+const ForwardRef = forwardRef(MessageCircleOutline)
 const Memo = memo(ForwardRef)
 export default Memo

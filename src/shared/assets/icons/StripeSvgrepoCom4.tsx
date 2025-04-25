@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 import { Ref, forwardRef, memo } from 'react'
-const SvgStripeSvgrepoCom4 = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+const StripeSvgrepoCom4 = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={24} height={16} fill="none" ref={ref} {...props}>
     <g clipPath="url(#StripeSvgrepoCom4_svg__a)">
       <path
@@ -22,6 +22,6 @@ const SvgStripeSvgrepoCom4 = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGEle
     </defs>
   </svg>
 )
-const ForwardRef = forwardRef(SvgStripeSvgrepoCom4)
+const ForwardRef = forwardRef(StripeSvgrepoCom4)
 const Memo = memo(ForwardRef)
 export default Memo

@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 import { Ref, forwardRef, memo } from 'react'
-const SvgMicOutline = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+const MicOutline = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" ref={ref} {...props}>
     <g fill="#000" clipPath="url(#MicOutline_svg__a)">
       <path d="M12 15a4 4 0 0 0 4-4V6a4 4 0 1 0-8 0v5a4 4 0 0 0 4 4m-2-9a2 2 0 1 1 4 0v5a2 2 0 0 1-4 0z" />
@@ -13,6 +13,6 @@ const SvgMicOutline = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) 
     </defs>
   </svg>
 )
-const ForwardRef = forwardRef(SvgMicOutline)
+const ForwardRef = forwardRef(MicOutline)
 const Memo = memo(ForwardRef)
 export default Memo

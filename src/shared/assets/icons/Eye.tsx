@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 import { Ref, forwardRef, memo } from 'react'
-const SvgEye = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+const Eye = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" ref={ref} {...props}>
     <g fill="#000" clipPath="url(#Eye_svg__a)">
       <path d="M12 13.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
@@ -13,6 +13,6 @@ const SvgEye = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
     </defs>
   </svg>
 )
-const ForwardRef = forwardRef(SvgEye)
+const ForwardRef = forwardRef(Eye)
 const Memo = memo(ForwardRef)
 export default Memo

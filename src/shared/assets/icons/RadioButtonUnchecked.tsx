@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 import { Ref, forwardRef, memo } from 'react'
-const SvgRadioButtonUnchecked = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+const RadioButtonUnchecked = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" ref={ref} {...props}>
     <g clipPath="url(#RadioButtonUnchecked_svg__a)">
       <path
@@ -15,6 +15,6 @@ const SvgRadioButtonUnchecked = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVG
     </defs>
   </svg>
 )
-const ForwardRef = forwardRef(SvgRadioButtonUnchecked)
+const ForwardRef = forwardRef(RadioButtonUnchecked)
 const Memo = memo(ForwardRef)
 export default Memo

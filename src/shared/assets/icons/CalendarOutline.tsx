@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 import { Ref, forwardRef, memo } from 'react'
-const SvgCalendarOutline = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+const CalendarOutline = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" ref={ref} {...props}>
     <g fill="#000" clipPath="url(#CalendarOutline_svg__a)">
       <path d="M18 4h-1V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3M6 6h1v1a1 1 0 0 0 2 0V6h6v1a1 1 0 0 0 2 0V6h1a1 1 0 0 1 1 1v4H5V7a1 1 0 0 1 1-1m12 14H6a1 1 0 0 1-1-1v-6h14v6a1 1 0 0 1-1 1" />
@@ -13,6 +13,6 @@ const SvgCalendarOutline = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGEleme
     </defs>
   </svg>
 )
-const ForwardRef = forwardRef(SvgCalendarOutline)
+const ForwardRef = forwardRef(CalendarOutline)
 const Memo = memo(ForwardRef)
 export default Memo

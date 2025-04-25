@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 import { Ref, forwardRef, memo } from 'react'
-const SvgArrowIosForward = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+const ArrowIosForward = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" ref={ref} {...props}>
     <g clipPath="url(#ArrowIosForward_svg__a)">
       <path
@@ -15,6 +15,6 @@ const SvgArrowIosForward = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGEleme
     </defs>
   </svg>
 )
-const ForwardRef = forwardRef(SvgArrowIosForward)
+const ForwardRef = forwardRef(ArrowIosForward)
 const Memo = memo(ForwardRef)
 export default Memo

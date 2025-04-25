@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 import { Ref, forwardRef, memo } from 'react'
-const SvgTrendingUpOutline = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+const TrendingUpOutline = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" ref={ref} {...props}>
     <g clipPath="url(#TrendingUpOutline_svg__a)">
       <path
@@ -15,6 +15,6 @@ const SvgTrendingUpOutline = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGEle
     </defs>
   </svg>
 )
-const ForwardRef = forwardRef(SvgTrendingUpOutline)
+const ForwardRef = forwardRef(TrendingUpOutline)
 const Memo = memo(ForwardRef)
 export default Memo

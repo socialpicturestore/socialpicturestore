@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 import { Ref, forwardRef, memo } from 'react'
-const SvgPaid = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+const Paid = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" ref={ref} {...props}>
     <path
       fill="#397DF6"
@@ -17,6 +17,6 @@ const SvgPaid = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
     </defs>
   </svg>
 )
-const ForwardRef = forwardRef(SvgPaid)
+const ForwardRef = forwardRef(Paid)
 const Memo = memo(ForwardRef)
 export default Memo

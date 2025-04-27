@@ -1,0 +1,68 @@
+@use "../../styles/variables/colors" as colors;
+
+.radioGroupRoot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 44px;
+}
+
+.radioItem {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  outline: none;
+
+  &.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+
+    .radioLabel,
+    .radioIcon {
+      color: colors.$color-light-900;
+    }
+  }
+}
+
+.radioWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radioWrapper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+  z-index: -1;
+}
+
+.radioItem:not(.disabled):hover .radioWrapper::before {
+  background-color: colors.$color-dark-300;
+}
+
+.radioItem:not(.disabled):focus-within .radioWrapper::before {
+  background-color: colors.$color-dark-500;
+}
+
+.radioItem:not(.disabled):active .radioWrapper::before {
+  background-color: colors.$color-dark-100;
+}
+
+
+.radioIcon {
+  color: colors.$color-light-100;
+}
+
+.radioLabel {
+  color: colors.$color-light-100;
+}

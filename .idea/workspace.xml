@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc2d2974-f572-4ff0-902e-c0058a849ed5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/Tabs/Tabs.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/Tabs/Tabs.stories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/shared/ui/Tabs/Tabs.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/Tabs/Tab.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/Tabs/Tab.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/Input/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/Input/Input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/Tabs/Tabs.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/Tabs/Tabs.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/Tabs/Tabs.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/Tabs/Tabs.stories.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/Tabs/Tabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/Tabs/Tabs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/ui/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +51,7 @@
     "node.js.selected.package.stylelint": "D:\\it-incubator\\internship\\inct\\socialpicturestore\\node_modules\\stylelint",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "pnpm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "D:\\it-incubator\\internship\\inct\\socialpicturestore\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }

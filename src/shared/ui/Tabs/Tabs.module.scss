@@ -9,7 +9,7 @@
   &[data-orientation="horizontal"] {
     .tabList {
       flex-direction: row;
-      border-bottom: colors.$color-light-900;
+     // border-bottom: 1px solid colors.$color-light-900; // Фикс: добавлено значение цвета;
     }
   }
 
@@ -27,7 +27,7 @@
 .tabList {
   display: flex;
   width: 100%;
-  border-bottom: 1px solid #E0E0E0;
+  //border-bottom: 1px solid #E0E0E0;
   gap: 4px;
   margin: 0;
   padding: 0;
@@ -37,10 +37,8 @@
 .tab {
   position: relative;
   padding: 8px 16px;
-  font-size: 16px;
-  font-weight: 600;
   color: colors.$color-dark-100;
-  background: none;
+  background-color:transparent;
   border: none;
   border-radius: 4px 4px 0 0;
   cursor: pointer;
@@ -49,20 +47,56 @@
   align-items: center;
   gap: 8px;
 
-  &:hover:not(.disabled) {
-    background: colors.$color-accent-900;
-    color: colors.$color-accent-500;;
+  // Добавляем псевдоэлемент для подчеркивания
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; // Выравниваем по нижней границе контейнера
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: colors.$color-dark-100;
+    transition: background-color 0.2s;
   }
+
+  &:hover:not(.disabled),
+ {
+    background-color: colors.$color-accent-900;
+    color: colors.$color-accent-500;
+
+    &::after {
+      background-color: colors.$color-accent-500; // Подчеркивание при hover
+    }
+  }
+
 
   &.active {
     color: colors.$color-accent-500;
-    background: colors.$color-accent-100;
+    background-color: colors.$color-accent-100;
+
+    &::after {
+      background-color: colors.$color-accent-500; // Яркое подчеркивание для активной вкладки
+    }
+  }
+  &:focus:not(.disabled){
+    border:2px solid colors.$color-accent-700;
+    color: colors.$color-accent-500;
+
+    &::after {
+      background-color: colors.$color-accent-500; // Подчеркивание при focus
+    }
   }
 
   &.disabled {
-    color: colors.$color-dark-300;
     cursor: not-allowed;
+    color: colors.$color-dark-300;
+
+    &::after {
+      background-color: colors.$color-dark-300; // Яркое подчеркивание для активной вкладки
+    }
   }
+
+
 
   &.error {
     color: colors.$color-danger-500;
@@ -82,4 +116,13 @@
 .icon {
   display: flex;
   align-items: center;
+}
+.label {
+  display: inline-flex; // Позволяет использовать flexbox для выравнивания
+  align-items: center; // Выравнивание текста по центру относительно иконки
+  gap: 8px; // Отступ между иконкой и текстом
+  color: inherit; // Наследует цвет текста из родительского элемента
+}
+.content {
+  margin-top: 8px;
 }

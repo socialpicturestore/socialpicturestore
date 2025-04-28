@@ -1,42 +1,25 @@
-import React, {
-    useState,
-    useEffect,
-    Children,
-    ReactNode,
-    isValidElement,
-} from 'react';
+import React, { useState, useEffect, Children, isValidElement } from 'react';
 import styles from './Tabs.module.scss';
+import {Tab, TabProps} from './Tab';
 
 // Типы
-type TabProps = {
-    id: string;
-    label: ReactNode;
-    disabled?: boolean;
-    error?: boolean;
-    icon?: ReactNode;
-    children?: ReactNode;
-    className?: string;
-};
-
 type TabGroupProps = {
     defaultActiveId?: string;
     activeId?: string;
     onTabChange?: (id: string) => void;
-    children: ReactNode;
+    children: React.ReactNode;
     className?: string;
     orientation?: 'horizontal' | 'vertical';
 };
 
-const Tab: React.FC<TabProps> = ({ children }) => <>{children}</>;
-
-const TabGroup: React.FC<TabGroupProps> = ({
-                                               defaultActiveId,
-                                               activeId: externalActiveId,
-                                               onTabChange,
-                                               children,
-                                               className = '',
-                                               orientation = 'horizontal',
-                                           }) => {
+const Tabs: React.FC<TabGroupProps> = ({
+                                           defaultActiveId,
+                                           activeId: externalActiveId,
+                                           onTabChange,
+                                           children,
+                                           className = '',
+                                           orientation = 'horizontal',
+                                       }) => {
     const [internalActiveId, setInternalActiveId] = useState(defaultActiveId);
     const isControlled = externalActiveId !== undefined;
     const activeId = isControlled ? externalActiveId : internalActiveId;
@@ -59,7 +42,7 @@ const TabGroup: React.FC<TabGroupProps> = ({
         onTabChange?.(id);
     };
 
-    const activeTab = tabs.find(tab => tab.props.id === activeId);
+    const activeTab = tabs.find((tab) => tab.props.id === activeId);
 
     return (
         <div
@@ -67,29 +50,22 @@ const TabGroup: React.FC<TabGroupProps> = ({
             data-orientation={orientation}
         >
             <div className={styles.tabList} role="tablist" aria-orientation={orientation}>
-                {tabs.map(tab => {
-                    const { id, icon, label, disabled, error, className: tabClassName } = tab.props;
+                {tabs.map((tab) => {
+                    const { id, label, disabled, error, icon, className: tabClassName } = tab.props;
                     const isActive = id === activeId;
 
                     return (
-                        <button
+                        <Tab
                             key={id}
-                            id={`tab-${id}`}
-                            className={`${styles.tab} ${isActive ? styles.active : ''} ${
-                                disabled ? styles.disabled : ''
-                            } ${error ? styles.error : ''} ${tabClassName || ''}`}
-                            onClick={() => !disabled && handleTabChange(id)}
+                            id={id}
+                            label={label}
                             disabled={disabled}
-                            role="tab"
-                            aria-selected={isActive}
-                            aria-controls={`tabpanel-${id}`}
-                            aria-disabled={disabled}
-                            tabIndex={isActive ? 0 : -1}
-                        >
-                            {icon && <span className={styles.icon}>{icon}</span>}
-                            {label}
-                            {error && <span className={styles.errorIndicator} aria-hidden="true">!</span>}
-                        </button>
+                            error={error}
+                            icon={icon}
+                            isActive={isActive}
+                            onClick={() => !disabled && handleTabChange(id)}
+                            className={tabClassName}
+                        />
                     );
                 })}
             </div>
@@ -108,4 +84,7 @@ const TabGroup: React.FC<TabGroupProps> = ({
         </div>
     );
 };
-export { Tab, TabGroup };
+
+Tabs.displayName = 'Tabs';
+
+export const TabsRoot = Object.assign(Tabs, { Tab });

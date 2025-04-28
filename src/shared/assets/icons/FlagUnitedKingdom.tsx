@@ -6,6 +6,7 @@ const FlagUnitedKingdom = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElemen
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width={24}
     height={24}
+    viewBox={'0 0 24 24'}
     fill="none"
     ref={ref}
     {...props}

@@ -1,10 +1,10 @@
-import { Typography } from '@/shared/ui'
 import type { Meta, StoryObj } from '@storybook/react'
+import { Typography } from '@/shared/ui'
 
 const meta: Meta<typeof Typography> = {
-  title: 'Components/Typography',
+  title: 'Typography',
   component: Typography,
-  tags: ['typography'],
+  tags: ['autodocs'],
   args: {
     children: 'Пример текста',
   },

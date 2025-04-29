@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Typography } from '@/shared/ui'
 
 const meta: Meta<typeof Typography> = {
-  title: 'Typography',
+  title: 'Components/Typography',
   component: Typography,
   tags: ['autodocs'],
   args: {

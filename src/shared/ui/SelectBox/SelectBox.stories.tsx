@@ -4,7 +4,7 @@ import styles from './selectBox.module.scss'
 import { FlagRussia, FlagUnitedKingdom } from '@/shared/assets/icons'
 
 const meta = {
-  title: 'SelectBox',
+  title: 'Components/SelectBox',
   component: SelectBox,
   parameters: {
     layout: 'centered',

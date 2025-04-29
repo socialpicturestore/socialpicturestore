@@ -1,6 +1,7 @@
-import { Search } from '@/shared/assets/icons'
+import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { Input } from './Input'
+import { Search } from '@/shared/assets/icons'
 
 const meta: Meta<typeof Input> = {
   title: 'Components/Input',
@@ -8,77 +9,57 @@ const meta: Meta<typeof Input> = {
   args: {
     placeholder: 'Введите текст...',
   },
+  tags: ['autodocs'],
 }
 
 export default meta
 
 type Story = StoryObj<typeof Input>
 
-export const Default: Story = {
+// 1. Email Input
+export const EmailInput: Story = {
   args: {
     label: 'Email',
+    variant: 'email',
+    placeholder: 'Введите email',
   },
 }
 
-export const WithSearchIcon: Story = {
-  args: {
-    label: 'Поиск',
-    startIcon: <Search />,
-    placeholder: 'Поиск...',
-  },
-}
-
-export const WithEyeIcon: Story = {
+// 2. Password Input
+export const PasswordInput: Story = {
   args: {
     label: 'Пароль',
-    type: 'password',
+    variant: 'password',
     placeholder: 'Введите пароль',
-    // endIcon не нужен отдельно — глаз обрабатывается прямо внутри компонента по типу
   },
 }
 
-export const Error: Story = {
+// 3. Search Input
+export const SearchInput: Story = {
+  args: {
+    label: 'Поиск',
+    variant: 'search',
+    placeholder: 'Поиск...',
+    startIcon: <Search />,
+  },
+}
+
+// 4. Error Input
+export const ErrorInput: Story = {
   args: {
     label: 'Email',
+    variant: 'email',
     error: 'Некорректный email',
-    value: 'user@email.com',
+    defaultValue: 'user@example',
   },
 }
 
-export const Focus: Story = {
+// 5. Disabled Input
+export const DisabledInput: Story = {
   args: {
-    label: 'Email',
-    placeholder: 'Фокус',
-  },
-  parameters: {
-    pseudo: { focus: true },
-  },
-}
-
-export const Hover: Story = {
-  args: {
-    label: 'Email',
-    placeholder: 'Наведи на меня',
-  },
-  parameters: {
-    pseudo: { hover: true },
-  },
-}
-
-export const Active: Story = {
-  args: {
-    label: 'Email',
-    placeholder: 'Поставь курсор',
-  },
-  parameters: {
-    pseudo: { active: true },
-  },
-}
-
-export const Disabled: Story = {
-  args: {
-    label: 'Email',
-    placeholder: 'Выключен',
+    label: 'Пароль',
+    variant: 'password',
+    placeholder: 'Введите пароль',
     disabled: true,
   },
 }

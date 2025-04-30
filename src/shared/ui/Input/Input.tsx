@@ -1,3 +1,4 @@
+'use client'
 import { EyeOffOutline, EyeOutline } from '@/shared/assets/icons'
 import { Typography } from '@/shared/ui/Typography'
 import { Slot } from '@radix-ui/react-slot'

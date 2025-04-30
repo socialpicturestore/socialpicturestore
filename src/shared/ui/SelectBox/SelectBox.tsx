@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react'
 import * as Select from '@radix-ui/react-select'
 import styles from './selectBox.module.scss'
@@ -23,11 +24,11 @@ type SelectProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   label?: string
   className?: string
   isMobile?: boolean
-  variant: 'desktop' | 'mobileLang' | 'pagination'
+  variant?: 'desktop' | 'mobileLang' | 'pagination'
 }
 
 const SelectBox = forwardRef<HTMLButtonElement, SelectProps>(
-  ({ options, label, className, variant, isMobile, ...props }, ref) => {
+  ({ options, label, className, variant = 'desktop', isMobile, ...props }, ref) => {
     const SELECT_CONTENT_VISIBLE_HEIGHT = 109
     const localTriggerRef = useRef<HTMLButtonElement>(null)
     useImperativeHandle(ref, () => localTriggerRef.current!)

@@ -1,4 +1,4 @@
-@use "../../styles/variables/colors" as colors;
+@use '../../styles/index.scss' as *;
 
 .radioGroupRoot {
   display: flex;
@@ -20,7 +20,7 @@
 
     .radioLabel,
     .radioIcon {
-      color: colors.$color-light-900;
+      color: $color-light-900;
     }
   }
 }
@@ -33,7 +33,7 @@
 }
 
 .radioWrapper::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -47,22 +47,21 @@
 }
 
 .radioItem:not(.disabled):hover .radioWrapper::before {
-  background-color: colors.$color-dark-300;
+  background-color: $color-dark-300;
 }
 
 .radioItem:not(.disabled):focus-within .radioWrapper::before {
-  background-color: colors.$color-dark-500;
+  background-color: $color-dark-500;
 }
 
 .radioItem:not(.disabled):active .radioWrapper::before {
-  background-color: colors.$color-dark-100;
+  background-color: $color-dark-100;
 }
 
-
 .radioIcon {
-  color: colors.$color-light-100;
+  color: $color-light-100;
 }
 
 .radioLabel {
-  color: colors.$color-light-100;
+  color: $color-light-100;
 }

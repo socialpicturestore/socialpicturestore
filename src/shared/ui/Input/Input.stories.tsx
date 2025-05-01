@@ -1,6 +1,6 @@
+import { Input } from '@/shared/ui'
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Input } from './Input'
 import { Search } from '@/shared/assets/icons'
 
 const meta: Meta<typeof Input> = {

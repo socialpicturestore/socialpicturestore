@@ -14,6 +14,7 @@ const meta = {
 } satisfies Meta<typeof SelectBox>
 
 export default meta
+
 type Story = StoryObj<typeof SelectBox>
 
 const defaultOptions = [

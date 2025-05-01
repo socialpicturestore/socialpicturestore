@@ -1,0 +1,158 @@
+@use '../../styles/variables/typography' as *;
+@use '../../styles/variables/colors' as *;
+
+@mixin button {
+  $font-family-primary: 'Inter', sans-serif;
+
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+
+  padding: 6px 24px;
+  border: none;
+  border-radius: 2px;
+
+  font-family: $font-family-primary;
+  font-size: $font-size-m;
+  font-weight: $font-weight-semi-bold;
+  line-height: $line-height-m;
+  text-align: center;
+  text-decoration: none;
+
+  background-color: transparent;
+
+  transition: 0.2s ease-in-out;
+
+  &:focus-visible {
+    outline: 1px solid $color-accent-700;
+  }
+
+  &:disabled {
+    cursor: initial;
+  }
+
+  &.fullWidth {
+    justify-content: center;
+    width: 100%;
+  }
+
+  &.mobile {
+    padding: 6px 12px;
+  }
+}
+
+.primary {
+  @include button;
+
+  color: $color-light-100;
+  background-color: $color-accent-500;
+
+  &:hover {
+    background-color: $color-accent-100;
+  }
+
+  &:active {
+    color: $color-light-500;
+    background-color: $color-accent-700;
+  }
+
+  &:disabled {
+    color: $color-light-900;
+    background-color: $color-accent-900;
+  }
+}
+
+.secondary {
+  @include button;
+
+  color: $color-light-100;
+  background-color: $color-dark-300;
+
+  &:hover {
+    background-color: $color-dark-100;
+  }
+
+  &:active {
+    background-color: $color-dark-300;
+  }
+
+  &:focus-visible {
+    outline: 1px solid $color-accent-300;
+  }
+
+  &:disabled {
+    color: $color-light-900;
+    background-color: $color-dark-500;
+  }
+}
+
+.outline {
+  @include button;
+
+  border: 1px solid $color-accent-500;
+  color: $color-accent-500;
+  background-color: transparent;
+
+  &:hover {
+    border: 1px solid $color-accent-100;
+    color: $color-accent-100;
+  }
+
+  &:active {
+    border: 1px solid $color-accent-700;
+    color: $color-accent-700;
+  }
+
+  &:disabled {
+    border: 1px solid $color-accent-900;
+    color: $color-accent-900;
+  }
+}
+
+.text {
+  @include button;
+
+  color: $color-accent-500;
+
+  &:hover {
+    color: $color-accent-100;
+  }
+
+  &:active {
+    color: $color-accent-700;
+  }
+
+  &:disabled {
+    color: $color-accent-900;
+  }
+}
+
+.withIcon {
+  @include button;
+
+  gap: 12px;
+  padding: 6px 12px;
+  color: $color-light-100;
+
+  &:hover {
+    color: $color-accent-100;
+  }
+
+  &:active {
+    color: $color-accent-500;
+  }
+
+  &:focus-visible {
+    outline: 1px solid $color-accent-700;
+  }
+
+  &:disabled {
+    color: $color-dark-100;
+  }
+}
+
+.icon {
+  gap: 12px;
+  padding: 6px 12px;
+}

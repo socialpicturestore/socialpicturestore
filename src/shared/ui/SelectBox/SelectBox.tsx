@@ -24,6 +24,7 @@ type SelectProps = {
 }
 
 const SelectBox = forwardRef<HTMLButtonElement, SelectProps>(
+
   ({ options, value, disabled, onChange, label, className, variant, isMobile }, ref) => {
     const SELECT_CONTENT_VISIBLE_HEIGHT = 109
     const localTriggerRef = useRef<HTMLButtonElement>(null)

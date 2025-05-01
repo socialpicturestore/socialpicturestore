@@ -1,51 +1,46 @@
+"use client"
+
 import React from 'react';
 import styles from './Tabs.module.scss';
 import { Typography } from '@/shared/ui';
+import clsx from "classnames";
 
-// Типы
 export type TabProps = {
     id: string;
     label: React.ReactNode;
-    disabled?: boolean;
-    error?: boolean;
-    icon?: React.ReactNode;
-    isActive?: boolean; // Добавляем пропс для активного состояния
-    onClick?: () => void;
+    isActive?: boolean; // Является ли таб активным
+    disabled?: boolean; // Отключен ли таб
+    onClick?: () => void; // Обработчик клика
     className?: string;
-    children?: React.ReactNode; // Добавляем children
 };
 
 export const Tab: React.FC<TabProps> = ({
                                             id,
                                             label,
-                                            disabled,
-                                            error,
-                                            icon,
-                                            isActive,
+                                            isActive = false,
+                                            disabled = false,
                                             onClick,
                                             className = '',
-                                            children, // Теперь children доступен
                                         }) => {
     return (
         <button
             id={`tab-${id}`}
             className={`${styles.tab} ${isActive ? styles.active : ''} ${
                 disabled ? styles.disabled : ''
-            } ${error ? styles.error : ''} ${className}`}
-            onClick={onClick}
-            disabled={disabled}
+            } ${className}`}
+            onClick={disabled ? undefined : onClick}
             role="tab"
             aria-selected={isActive}
-            tabIndex={isActive ? 0 : -1}
+            tabIndex={isActive && !disabled ? 0 : -1}
+            disabled={disabled}
         >
-            {icon && <span className={styles.icon}>{icon}</span>}
-            {/* Используем Typography для метки */}
-            <Typography variant="h3" as="span" className={styles.label}>
+            <Typography variant="h3" className={clsx(
+                styles.label,
+                isActive ? styles['label.accent'] : styles['label.default'],
+                disabled && styles['label.disabled']
+            )}>
                 {label}
             </Typography>
-            {error && <span className={styles.errorIndicator} aria-hidden="true">!</span>}
-            {/* Отображаем children, если они переданы */}
-            {children}
         </button>
     );
 };

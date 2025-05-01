@@ -1,128 +1,171 @@
-@use '../../styles/variables/colors' as colors;
+@use "../../styles/variables/colors" as colors;
 
 .tabGroup {
-  width: 100%;
   display: flex;
+  align-items: center;
+  gap: 10px; // Расстояние между табами
+  padding-bottom: 10px;
   flex-direction: column;
-
-
-  &[data-orientation="horizontal"] {
-    .tabList {
-      flex-direction: row;
-     // border-bottom: 1px solid colors.$color-light-900; // Фикс: добавлено значение цвета;
-    }
-  }
-
-  &[data-orientation="vertical"] {
-    flex-direction: row;
-
-    .tabList {
-      flex-direction: column;
-      border-right: 1px solid #ddd;
-      min-width: 120px;
-    }
-  }
+  width: 100%;
 }
 
 .tabList {
   display: flex;
-  width: 100%;
-  //border-bottom: 1px solid #E0E0E0;
-  gap: 4px;
+  width: 100%; // Контейнер занимает всю ширину
+  align-items: center;
+  text-align: center;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+// Общие стили для всех табов
 .tab {
-  position: relative;
-  padding: 8px 16px;
-  color: colors.$color-dark-100;
-  background-color:transparent;
-  border: none;
-  border-radius: 4px 4px 0 0;
+  flex-grow: 1; // Табы занимают всю доступную ширину
+  text-align: center; // Текст по центру
+ // padding: 5px 5px; // Убираем горизонтальные отступы, оставляем только вертикальные
   cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  min-width:85px;
+  min-height: 36px;
+  position: relative; // Для позиционирования ::after
+  transition: all 0.3s ease;
+  border: none;
+  //display: flex;
+  //align-items: center;
+  //gap: 8px;
 
-  // Добавляем псевдоэлемент для подчеркивания
+  // Псевдоэлемент ::after для нижнего подчеркивания
   &::after {
     content: '';
     position: absolute;
-    bottom: -1px; // Выравниваем по нижней границе контейнера
     left: 0;
+    bottom: -1px;
     width: 100%;
-    height: 2px;
-    background-color: colors.$color-dark-100;
-    transition: background-color 0.2s;
+    height: 3px; // Толщина подчеркивания
+    background-color: colors.$color-dark-100; // По умолчанию прозрачное
+    transition: all 0.3s ease; // Плавная анимация
   }
 
-  &:hover:not(.disabled),
- {
-    background-color: colors.$color-accent-900;
-    color: colors.$color-accent-500;
+  // Неактивный таб по умолчанию
+  &:not(.active) {
+    color: colors.$color-dark-100;
+    background-color: transparent;
 
+    // Нижнее подчеркивание для неактивного таба
     &::after {
-      background-color: colors.$color-accent-500; // Подчеркивание при hover
+      background-color: colors.$color-dark-100; // Серое подчеркивание
+    }
+
+    // Hover для неактивного таба
+    &:hover {
+      background-color: colors.$color-accent-900; // синее подчеркивание
+
+      &::after{
+        background-color: colors.$color-dark-100; // Светло-серое подчеркивание
+      }
+    }
+
+    // Focus для неактивного таба
+    &:focus {
+      //outline: colors.$color-accent-700;
+      background-color: colors.$color-accent-700;
+
+     // outline-offset: 2px;
+    }
+
+    // Disabled для неактивного таба
+    &.disabled {
+      color: colors.$color-dark-300; // Темно-серый текст
+      cursor: not-allowed;
+     // opacity: 0.6;
+
+      &::after {
+        background-color: colors.$color-dark-300; // Серое подчеркивание
+      }
+    }
+
+    // Стили для неактивного таба с классом active
+    &.active {
+      color: colors.$color-dark-100;// Текст остается темным
+      background-color: colors.$color-accent-100;
+      border: none; // Граница остается без изменений
+
+      &::after {
+        background-color: colors.$color-dark-100; // Подчеркивание остается серым
+      }
     }
   }
 
-
+  // Активный таб по умолчанию
   &.active {
     color: colors.$color-accent-500;
-    background-color: colors.$color-accent-100;
+    //background-color: colors.$color-accent-100;
+    background-color: transparent;
+   // border: 1px solid colors.$color-accent-500; // Граница становится синей
 
+    // Нижнее подчеркивание для активного таба
     &::after {
-      background-color: colors.$color-accent-500; // Яркое подчеркивание для активной вкладки
+      background-color: colors.$color-accent-500; // Синее подчеркивание
     }
-  }
-  &:focus:not(.disabled){
-    border:2px solid colors.$color-accent-700;
-    color: colors.$color-accent-500;
 
-    &::after {
-      background-color: colors.$color-accent-500; // Подчеркивание при focus
+    // Hover для активного таба
+    &:hover {
+      color: colors.$color-accent-500;
+      background-color: colors.$color-accent-900; // Темно-синее подчеркивание
+
+      &::after {
+        background-color: colors.$color-accent-500; // Синее подчеркивание
+      }
     }
-  }
 
-  &.disabled {
-    cursor: not-allowed;
-    color: colors.$color-dark-300;
-
-    &::after {
-      background-color: colors.$color-dark-300; // Яркое подчеркивание для активной вкладки
+    // Focus для активного таба
+    &:focus {
+      outline: 2px solid colors.$color-accent-700; // Белый контур
+      //outline-offset: 2px;
     }
-  }
 
+    // Disabled для активного таба
+    &.disabled {
+      color: colors.$color-accent-900; // Темно-синий текст
+      cursor: not-allowed;
+      //opacity: 0.6;
 
+      &::after {
+        background-color: colors.$color-accent-900; // Темно-синее подчеркивание
+      }
+    }
 
-  &.error {
-    color: colors.$color-danger-500;
+    // Стили для активного таба с классом active
+    &.active {
+      background-color: colors.$color-accent-100;; // Фон остается синим
 
-    .errorIndicator {
-      color: colors.$color-danger-500;
-      font-weight: bold;
+      //&::after {
+      //  background-color: $primary-color; // Подчеркивание остается синим
+      //}
     }
   }
 }
 
-.tabContent {
-  padding: 16px;
-  flex-grow: 1;
-}
-
-.icon {
-  display: flex;
-  align-items: center;
-}
+// Стили для label (текста внутри таба)
 .label {
-  display: inline-flex; // Позволяет использовать flexbox для выравнивания
-  align-items: center; // Выравнивание текста по центру относительно иконки
-  gap: 8px; // Отступ между иконкой и текстом
-  color: inherit; // Наследует цвет текста из родительского элемента
+  transition: color 0.3s ease; // Плавная анимация цвета текста
+  margin: 0;
+
+  // Стили для неактивного таба
+  &.default {
+    color: colors.$color-dark-100; // Серый цвет текста для неактивного таба
+  }
+
+  // Стили для активного таба
+  &.accent {
+    color: colors.$color-accent-500; // Синий цвет текста для активного таба
+  }
+
+  // Стили для отключенного таба
+  &.disabled {
+    color: colors.$color-dark-300; // Темно-серый текст для отключенного таба
+    cursor: not-allowed;
+    //opacity: 0.6;
+  }
 }
-.content {
-  margin-top: 8px;
-}
+

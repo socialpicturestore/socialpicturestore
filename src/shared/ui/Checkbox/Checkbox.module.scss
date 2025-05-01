@@ -7,12 +7,6 @@
 }
 
 .text {
-  font-family: $font-family-primary;
-  font-weight: $font-weight-regular;
-  font-size: $font-size-s;
-  line-height: $line-height-m;
-  color: $color-light-100;
-
   &.disabled {
     color: $color-light-900;
     opacity: 1;

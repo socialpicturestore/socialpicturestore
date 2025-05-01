@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { FlagUnitedKingdom, LogOut, SettingsOutline } from '@/shared/assets/icons'
 import { Typography } from '@/shared/ui'
 import { fn } from '@storybook/test'
-import { Button } from '@/shared/ui/button/Button'
+import { Button } from '@/shared/ui/Button/Button'
 
 const meta: Meta = {
   title: 'Components/Button',

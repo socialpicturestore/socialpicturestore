@@ -1,5 +1,5 @@
 import { EyeOffOutline, EyeOutline } from '@/shared/assets/icons'
-import { Typography } from '@/shared/ui/Typography'
+import { Typography } from '@/shared/ui'
 import { Slot } from '@radix-ui/react-slot'
 import { forwardRef, type InputHTMLAttributes, type ReactNode, useState } from 'react'
 import clsx from 'classnames'

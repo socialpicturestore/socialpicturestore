@@ -2,14 +2,8 @@ import * as React from 'react'
 import * as Select from '@radix-ui/react-select'
 import styles from './selectBox.module.scss'
 import { ArrowIosDownOutline } from '@/shared/assets/icons'
-import {
-  type ButtonHTMLAttributes,
-  type ReactNode,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from 'react'
-import { Typography } from '@/shared/ui/Typography'
+import { type ReactNode, useImperativeHandle, useRef, useState } from 'react'
+import { Typography } from '@/shared/ui/'
 import clsx from 'classnames'
 import { forwardRef } from 'react'
 
@@ -18,8 +12,11 @@ type Option = {
   icon?: ReactNode
 }
 
-type SelectProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+type SelectProps = {
   options: Option[]
+  value?: string
+  onChange?: (val: string) => void
+  disabled?: boolean
   label?: string
   className?: string
   isMobile?: boolean
@@ -27,12 +24,12 @@ type SelectProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 }
 
 const SelectBox = forwardRef<HTMLButtonElement, SelectProps>(
-  ({ options, label, className, variant, isMobile, ...props }, ref) => {
+
+  ({ options, value, disabled, onChange, label, className, variant, isMobile }, ref) => {
     const SELECT_CONTENT_VISIBLE_HEIGHT = 109
     const localTriggerRef = useRef<HTMLButtonElement>(null)
-    useImperativeHandle(ref, () => localTriggerRef.current!)
+    useImperativeHandle(ref, () => localTriggerRef.current as HTMLButtonElement, [])
 
-    const [value, setValue] = useState(options[0].value)
     const [contentWidth, setContentWidth] = useState<number>()
 
     const selectedOption = options.find(option => option.value === value)
@@ -53,14 +50,16 @@ const SelectBox = forwardRef<HTMLButtonElement, SelectProps>(
         )}
         <Select.Root
           value={value}
-          onValueChange={setValue}
+          onValueChange={value => onChange?.(value)}
           onOpenChange={handleOpenChange}
-          disabled={props.disabled}
+          disabled={disabled}
         >
           <Select.Trigger ref={localTriggerRef} className={clsx(styles[variant], styles.trigger)}>
             <div className={styles.triggerValue}>
               {selectedOption?.icon && <span className={styles.icon}>{selectedOption.icon}</span>}
-              {variant !== 'mobileLang' ? <Select.Value placeholder={value} /> : null}
+              {variant !== 'mobileLang' ? (
+                <Select.Value placeholder={selectedOption?.value} />
+              ) : null}
             </div>
             <Select.Icon className={styles.selectedIcon}>
               <ArrowIosDownOutline width={isMobile ? 16 : 24} height={isMobile ? 16 : 24} />

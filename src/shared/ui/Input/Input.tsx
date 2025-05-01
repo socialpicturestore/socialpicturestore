@@ -1,5 +1,5 @@
 import { EyeOffOutline, EyeOutline, Search } from '@/shared/assets/icons'
-import { Typography } from '@/shared/ui/Typography'
+import { Typography } from '@/shared/ui'
 import React, { useState, forwardRef, useId, type InputHTMLAttributes, type ReactNode } from 'react'
 import clsx from 'classnames'
 

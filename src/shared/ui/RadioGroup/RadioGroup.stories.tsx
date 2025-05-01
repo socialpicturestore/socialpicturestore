@@ -1,3 +1,5 @@
+// RadioGroup.stories.tsx
+import React, { useState } from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import { RadioGroup } from './RadioGroup'
 
@@ -5,55 +7,47 @@ const meta: Meta<typeof RadioGroup> = {
   title: 'Components/RadioGroup',
   component: RadioGroup,
   tags: ['autodocs'],
+  argTypes: {
+    value: {
+      control: {
+        type: 'radio',
+        options: ['option1', 'option2'],
+      },
+    },
+  },
 }
 
 export default meta
 type Story = StoryObj<typeof RadioGroup>
 
 const options = [
-  { value: 'option1', label: 'RadioGroup' },
-  { value: 'option2', label: 'RadioGroup' },
+  { value: 'option1', label: 'RadioGroupV1' },
+  { value: 'option2', label: 'RadioGroupV2' },
 ]
 
 export const Default: Story = {
-  args: {
-    value: 'option1',
-    onValueChange: value => console.log(value),
-    options,
+  render: ({ value, ...args }) => {
+    const [val, setVal] = useState<string>(value ?? '')
+    return <RadioGroup {...args} value={val} onValueChange={setVal} options={options} />
   },
-}
-
-export const Active: Story = {
   args: {
     value: 'option1',
-    onValueChange: value => console.log(value),
-    options,
-  },
-}
-
-export const Hover: Story = {
-  args: {
-    value: 'option1',
-    onValueChange: value => console.log(value),
-    options,
-  },
-}
-
-export const Focus: Story = {
-  args: {
-    value: 'option1',
-    onValueChange: value => console.log(value),
-    options,
   },
 }
 
 export const Disabled: Story = {
+  render: ({ value, ...args }) => {
+    const [val, setVal] = useState<string>(value ?? '')
+    return (
+      <RadioGroup
+        {...args}
+        value={val}
+        onValueChange={setVal}
+        options={options.map(opt => ({ ...opt, disabled: true }))}
+      />
+    )
+  },
   args: {
     value: 'option1',
-    onValueChange: value => console.log(value),
-    options: [
-      { value: 'option1', label: 'RadioGroup', disabled: true },
-      { value: 'option2', label: 'RadioGroup', disabled: true },
-    ],
   },
 }

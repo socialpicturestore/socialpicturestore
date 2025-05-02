@@ -62,6 +62,7 @@ export const Interactive: Story = {
 export const SmallLabel: Story = {
   args: {
     children: 'Small text',
+    checked: true,
   },
 }
 

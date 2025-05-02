@@ -89,7 +89,7 @@ export const ButtonWithIcon: Story = {
     </Button>
   ),
   args: {
-    text: 'Back',
+    text: 'English',
     variant: 'withIcon',
   },
 }

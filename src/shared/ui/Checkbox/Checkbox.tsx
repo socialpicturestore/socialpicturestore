@@ -67,4 +67,4 @@ const Checkbox = forwardRef<ComponentRef<typeof CheckboxRadix.Root>, CheckboxPro
 )
 
 Checkbox.displayName = 'Checkbox'
-export default Checkbox
+export { Checkbox }

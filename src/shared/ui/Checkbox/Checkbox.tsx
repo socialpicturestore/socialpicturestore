@@ -12,17 +12,18 @@ export type CheckboxProps = {
   disabled?: boolean
   small?: boolean
   id?: string
-  label?: ReactNode
-  onChange: (checked: boolean) => void
+  children?: ReactNode
+  onChange?: (checked: boolean) => void
   required?: boolean
   indent?: boolean
 } & ComponentPropsWithoutRef<typeof CheckboxRadix.Root>
 
 const Checkbox = forwardRef<ComponentRef<typeof CheckboxRadix.Root>, CheckboxProps>(
   (
-    { checked, className, disabled, id, label, onChange, required, indent, small, ...props },
+    { checked, className, disabled, id, children, onChange, required, indent, small, ...props },
     ref
   ) => {
+    const isTextOnly = typeof children === 'string' || typeof children === 'number'
     return (
       <div className={clsx(s.box, className)}>
         <LabelRadix.Root className={clsx(s.label, disabled && s.disabled, indent && s.indent)}>
@@ -49,13 +50,15 @@ const Checkbox = forwardRef<ComponentRef<typeof CheckboxRadix.Root>, CheckboxPro
               )}
             </CheckboxRadix.Root>
           </div>
-          {label && (
+          {isTextOnly ? (
             <Typography
               variant={small ? 'regularText12' : 'regularText14'}
               className={clsx(s.text, disabled && s.disabled)}
             >
-              {label}
+              {children}
             </Typography>
+          ) : (
+            children
           )}
         </LabelRadix.Root>
       </div>

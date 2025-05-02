@@ -8,7 +8,7 @@ const meta: Meta<typeof Checkbox> = {
   argTypes: {
     checked: { control: 'boolean' },
     disabled: { control: 'boolean' },
-    label: { control: 'text' },
+    children: { control: 'text' },
     onChange: { action: 'changed' },
   },
 }
@@ -19,7 +19,7 @@ type Story = StoryObj<typeof Checkbox>
 export const Default: Story = {
   args: {
     checked: true,
-    label: 'Check me',
+    children: 'Check me',
   },
 }
 
@@ -34,7 +34,7 @@ export const Disabled: Story = {
   args: {
     checked: false,
     disabled: true,
-    label: 'Disabled',
+    children: 'Disabled',
   },
 }
 
@@ -42,24 +42,25 @@ export const DisabledChecked: Story = {
   args: {
     checked: true,
     disabled: true,
-    label: 'Disabled checked',
+    children: 'Disabled checked',
   },
 }
 
 export const Interactive: Story = {
-  args: {
-    checked: false,
-    label: 'Check',
-  },
-}
-
-export const SmallLabel: Story = {
   render: args => {
     const [checked, setChecked] = useState(false)
     return <Checkbox {...args} small checked={checked} onChange={() => setChecked(!checked)} />
   },
+
   args: {
-    label: 'Small text',
+    checked: false,
+    children: 'Check',
+  },
+}
+
+export const SmallLabel: Story = {
+  args: {
+    children: 'Small text',
   },
 }
 
@@ -69,7 +70,7 @@ export const Compact: Story = {
     return <Checkbox {...args} checked={checked} onChange={() => setChecked(!checked)} />
   },
   args: {
-    label: 'Compact',
+    children: 'Compact',
     indent: true,
   },
 }

@@ -1,0 +1,57 @@
+@use '../../shared/styles/index.scss' as *;
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 1280px;
+  margin: 0 auto;
+  padding: 12px 64px 12px 60px;
+
+  .select {
+    width: 163px;
+    margin-left: 45px;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  border-bottom: 1px solid $color-dark-300;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.bellButton {
+  position: relative;
+  padding: 0;
+
+  & > span {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    align-items: center;
+    align-content: center;
+
+    width: 13px;
+    height: 13px;
+
+    border-radius: 50%;
+    background-color: $color-danger-500;
+  }
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  margin-left: 36px;
+
+  & > button {
+    width: 100px;
+  }
+}

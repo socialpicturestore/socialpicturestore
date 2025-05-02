@@ -1,4 +1,4 @@
-@use '../shared/styles/index.scss' as styles;
+@use '../shared/styles/index.scss' as *;
 
 *,
 *::before,
@@ -8,22 +8,42 @@
   box-sizing: border-box;
 }
 
-:root {
-  --background: #fff;
-  --foreground: #171717;
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+input,
+button,
+select,
+textarea,
+optgroup,
+option {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  color: inherit;
+}
+
+button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--foreground);
-  background: var(--background);
+  margin: 0;
+  padding: 0;
+
+  font-family: $font-family-primary;
+  line-height: $line-height-m;
+  color: $color-light-100;
+
+  background-color: $color-dark-700;
 }

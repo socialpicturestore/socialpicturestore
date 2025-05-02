@@ -1,14 +1,6 @@
-<<<<<<< HEAD
-
-import { EyeOffOutline, EyeOutline } from '@/shared/assets/icons'
-import { Typography } from '@/shared/ui/Typography'
-import { Slot } from '@radix-ui/react-slot'
-import { forwardRef, type InputHTMLAttributes, type ReactNode, useState } from 'react'
-=======
 import { EyeOffOutline, EyeOutline, Search } from '@/shared/assets/icons'
 import { Typography } from '@/shared/ui'
 import React, { useState, forwardRef, useId, type InputHTMLAttributes, type ReactNode } from 'react'
->>>>>>> dev
 import clsx from 'classnames'
 
 import styles from './Input.module.scss'

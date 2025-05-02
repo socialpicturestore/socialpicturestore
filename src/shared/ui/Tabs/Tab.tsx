@@ -1,9 +1,8 @@
-"use client"
-
 import React from 'react';
 import styles from './Tabs.module.scss';
 import { Typography } from '@/shared/ui';
 import clsx from "classnames";
+import {Button} from "@/shared/ui/button/Button"
 
 export type TabProps = {
     id: string;
@@ -14,7 +13,7 @@ export type TabProps = {
     className?: string;
 };
 
-export const Tab: React.FC<TabProps> = ({
+const Tab: React.FC<TabProps> = ({
                                             id,
                                             label,
                                             isActive = false,
@@ -23,7 +22,7 @@ export const Tab: React.FC<TabProps> = ({
                                             className = '',
                                         }) => {
     return (
-        <button
+        <Button
             id={`tab-${id}`}
             className={`${styles.tab} ${isActive ? styles.active : ''} ${
                 disabled ? styles.disabled : ''
@@ -41,6 +40,9 @@ export const Tab: React.FC<TabProps> = ({
             )}>
                 {label}
             </Typography>
-        </button>
+        </Button>
     );
 };
+
+Tab.displayName = 'Tab'
+export { Tab }

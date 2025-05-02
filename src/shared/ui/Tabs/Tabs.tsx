@@ -1,5 +1,3 @@
-"use client"
-
 import React, { Children, isValidElement } from 'react';
 import styles from './Tabs.module.scss';
 import { Tab, TabProps } from './Tab';
@@ -11,7 +9,7 @@ type TabsProps = {
     className?: string;
 };
 
-export const Tabs: React.FC<TabsProps> = ({ activeId, onTabChange, children, className = '' }) => {
+ const Tabs: React.FC<TabsProps> = ({ activeId, onTabChange, children, className = '' }) => {
     // Фильтруем только дочерние элементы типа Tab
     const tabs = Children.toArray(children).filter(
         (child): child is React.ReactElement<TabProps> =>
@@ -41,3 +39,5 @@ export const Tabs: React.FC<TabsProps> = ({ activeId, onTabChange, children, cla
         </div>
     );
 };
+Tabs.displayName = 'Tabs'
+export { Tabs }

@@ -1,7 +1,7 @@
 import RadioButtonChecked from '@/shared/assets/icons/RadioButtonChecked'
 import RadioButtonUnchecked from '@/shared/assets/icons/RadioButtonUnchecked'
 import { Typography } from '@/shared/ui'
-import { Item, Root } from '@radix-ui/react-radio-group'
+import { Item, Root, Indicator } from '@radix-ui/react-radio-group'
 import clsx from 'classnames'
 import { forwardRef } from 'react'
 
@@ -25,7 +25,6 @@ type RadioGroupProps = {
 
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
   ({ options, value, defaultValue, onValueChange, label, name, className, ...props }, ref) => {
-    // Собираем пропсы для Radix
     const groupProps = {
       className: clsx(styles.radioGroupRoot, className),
       ...(value !== undefined ? { value } : { defaultValue }),
@@ -35,22 +34,20 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
       ...props,
     }
 
-    // Рендер радио-кнопок
     const radioContent = (
       <Root {...groupProps}>
         {options.map(option => (
           <Item
             key={option.value}
-            className={clsx(styles.radioItem, { [styles.disabled]: option.disabled })}
             value={option.value}
             disabled={option.disabled}
+            className={clsx(styles.radioItem, { [styles.disabled]: option.disabled })}
           >
             <div className={styles.radioWrapper}>
-              {value === option.value ? (
+              <RadioButtonUnchecked className={styles.radioIcon} />
+              <Indicator className={styles.radioIndicator}>
                 <RadioButtonChecked className={styles.radioIcon} />
-              ) : (
-                <RadioButtonUnchecked className={styles.radioIcon} />
-              )}
+              </Indicator>
             </div>
             <Typography as="span" variant="regularText14" className={styles.radioLabel}>
               {option.label}

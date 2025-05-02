@@ -4,6 +4,18 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+
+  &.inputDisabled {
+    .inputInnerWrapper {
+      .inputIcon {
+        cursor: not-allowed;
+
+        svg {
+          color: colors.$color-dark-100;
+        }
+      }
+    }
+  }
 }
 
 .inputLabel {
@@ -14,6 +26,20 @@
   position: relative;
   display: flex;
   align-items: center;
+
+  // Search icon становится белой при фокусе
+  &:focus-within {
+    .inputIcon.startIcon svg {
+      color: colors.$color-light-100;
+    }
+  }
+
+  // Search icon становится белой при активном (mousedown)
+  &:active {
+    .inputIcon.startIcon svg {
+      color: colors.$color-light-100;
+    }
+  }
 }
 
 .inputField {
@@ -23,6 +49,11 @@
   border-radius: 6px;
   padding: 8px 12px;
   transition: border-color 0.2s;
+
+  font-family: typo.$font-family-primary;
+  font-size: typo.$font-size-m;
+  font-weight: typo.$font-weight-regular;
+  line-height: typo.$line-height-m;
 
   &::placeholder {
     font-size: 16px;
@@ -84,10 +115,18 @@
 
   &.startIcon {
     left: 12px;
+
+    svg {
+      color: colors.$color-light-900;
+    }
   }
 
   &.endIcon {
     right: 12px;
+
+    svg {
+      color: colors.$color-light-100;
+    }
   }
 }
 

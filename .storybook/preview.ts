@@ -9,6 +9,13 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    backgrounds: {
+      default: 'dark',
+      values: [
+        { name: 'dark', value: '#0D0D0DFF' }, // твой тёмный фон
+        { name: 'light', value: '#FFFFFF' }, // можно добавить ещё светлый
+      ],
+    },
   },
 }
 

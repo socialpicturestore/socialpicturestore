@@ -4,9 +4,7 @@ import { DatePicker } from '@/shared/ui'
 const meta = {
   title: 'Components/DatePicker',
   component: DatePicker,
-  parameters: {
-    layout: 'centered',
-  },
+
   tags: ['autodocs'],
 } satisfies Meta<typeof DatePicker>
 
@@ -14,8 +12,14 @@ export default meta
 
 type Story = StoryObj<typeof DatePicker>
 
-export const Default: Story = {
+export const RangeDatePicker: Story = {
   render: () => {
-    return <DatePicker />
+    return <DatePicker variant={'range'} />
+  },
+}
+
+export const MutipleDatePicker: Story = {
+  render: () => {
+    return <DatePicker variant={'multiple'} />
   },
 }

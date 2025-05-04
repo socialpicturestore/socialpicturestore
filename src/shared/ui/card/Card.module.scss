@@ -17,15 +17,20 @@
 }
 
 .cardHeader {
+    margin: 10px;
+}
+
+.cardFooter {
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
+    gap: 5px;
+    margin: 10px;
 }
 
 .cardContent {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    margin: auto;
-    gap: 4px;
+    align-content: space-between;
+    margin: 10px;
+    gap: 10px;
 }

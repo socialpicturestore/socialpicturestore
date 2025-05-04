@@ -1,7 +1,7 @@
-import React from 'react'
+ const page = () => {
 
-const page = () => {
-  return <div>Hello SPAртанцы</div>
+   return <div>Hello SPAртанцы
+  </div>
 }
 
 export default page

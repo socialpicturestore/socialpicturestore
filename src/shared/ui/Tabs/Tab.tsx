@@ -1,8 +1,7 @@
 import React from 'react'
 import styles from './Tabs.module.scss'
-import { Typography } from '@/shared/ui'
+import { Button, Typography } from '@/shared/ui'
 import clsx from 'classnames'
-import { Button } from '@/shared/ui'
 
 export type TabProps = {
   id: string

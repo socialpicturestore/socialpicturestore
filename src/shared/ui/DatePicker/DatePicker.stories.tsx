@@ -14,12 +14,24 @@ type Story = StoryObj<typeof DatePicker>
 
 export const RangeDatePicker: Story = {
   render: () => {
-    return <DatePicker variant={'range'} />
+    return <DatePicker mode={'range'} />
+  },
+}
+
+export const DisabledDatePicker: Story = {
+  render: () => {
+    return <DatePicker mode={'range'} disabled={true} />
   },
 }
 
 export const MutipleDatePicker: Story = {
   render: () => {
-    return <DatePicker variant={'multiple'} />
+    return <DatePicker mode={'multiple'} />
+  },
+}
+
+export const SingleDatePicker: Story = {
+  render: () => {
+    return <DatePicker mode={'single'} />
   },
 }

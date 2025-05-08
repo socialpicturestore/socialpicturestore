@@ -20,13 +20,13 @@ export const DatePicker = ({ mode, disabled }: DatePickerProps) => {
   const dialogId = useId()
   const headerId = useId()
 
-  const [month, setMonth] = useState(new Date())
   const [selectedSingle, setSelectedSingle] = useState<Date | undefined>()
   const [selectedMultiple, setSelectedMultiple] = useState<Date[] | undefined>([])
   const [selectedRange, setSelectedRange] = useState<DateRange | undefined>()
   const [inputValue, setInputValue] = useState('')
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const isSingle = isSingleDayRange(selectedRange)
+  const [error, setError] = useState('')
   const selected =
     mode === 'single' ? selectedSingle : mode === 'multiple' ? selectedMultiple : selectedRange
 
@@ -36,7 +36,6 @@ export const DatePicker = ({ mode, disabled }: DatePickerProps) => {
         setIsDialogOpen(false)
       }
     }
-
     if (isDialogOpen) {
       document.addEventListener('mousedown', handleOutsideClick)
     } else {
@@ -72,36 +71,57 @@ export const DatePicker = ({ mode, disabled }: DatePickerProps) => {
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value)
-    const parsedDate = parse(e.target.value, 'dd/MM/yyyy', new Date())
-    if (!isValid(parsedDate)) return
-    setMonth(parsedDate)
+    const value = e.target.value
+
+    setInputValue(value)
+
+    const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/
+    if (!dateRegex.test(value)) {
+      setError('Error! Enter date in format dd/MM/yyyy')
+      return
+    }
+    const parsedDate = parse(value, 'dd/MM/yyyy', new Date())
+    if (!isValid(parsedDate)) {
+      return
+    }
+
     if (mode === 'single') setSelectedSingle(parsedDate)
     if (mode === 'multiple') setSelectedMultiple([parsedDate])
     if (mode === 'range') setSelectedRange({ from: parsedDate, to: undefined })
+
+    setError('')
   }
 
   return (
     <div ref={wrapperRef}>
-      <div className={styles.inputWrapper}>
+      <div className={styles.inputWrapper} onClick={() => setIsDialogOpen(!isDialogOpen)}>
         <input
-          className={clsx(styles.inputBox, { [styles.inputBoxOpen]: isDialogOpen })}
+          className={clsx(styles.inputBox, {
+            [styles.inputBoxOpen]: isDialogOpen,
+            [styles.inputBoxError]: !!error,
+          })}
           id="date-input"
           type="text"
           value={inputValue}
-          placeholder="Select date"
+          placeholder={
+            mode === 'single'
+              ? 'Select date'
+              : mode === 'multiple'
+                ? 'Select multiple date'
+                : 'Select range date'
+          }
           onChange={handleInputChange}
-          onFocus={() => setIsDialogOpen(true)}
           disabled={disabled}
         />
         <span className={styles.calendarIcon}>
           {isDialogOpen ? (
-            <Calendar color={'#ffffff'} width={20} height={20} />
+            <Calendar color={error ? '#cc1439' : '#ffffff'} width={20} height={20} />
           ) : (
-            <CalendarOutline color={'#ffffff'} width={20} height={20} />
+            <CalendarOutline color={error ? '#cc1439' : '#ffffff'} width={20} height={20} />
           )}
         </span>
       </div>
+      {error && <p className={styles.errorMessage}>{error}</p>}
       {isDialogOpen && (
         <div
           role="dialog"
@@ -114,8 +134,6 @@ export const DatePicker = ({ mode, disabled }: DatePickerProps) => {
             mode={mode}
             selected={selected}
             onSelect={handleSelect}
-            month={month}
-            onMonthChange={setMonth}
             showOutsideDays
             modifiers={{
               weekend: date => date.getDay() === 0 || date.getDay() === 6,

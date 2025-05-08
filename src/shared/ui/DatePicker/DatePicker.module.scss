@@ -31,6 +31,7 @@
 }
 
 .calendarIcon {
+  cursor: pointer;
   position: absolute;
   right: 6px;
   height: 20px;
@@ -60,6 +61,7 @@
 
   &:disabled {
     cursor: not-allowed;
+    color: $color-dark-300;
     background-color: $color-dark-500;
   }
 }
@@ -70,6 +72,21 @@
 
 .inputBoxClose {
   background-color: transparent;
+}
+
+.inputBoxError {
+  border-color: $color-danger-500;
+  color: $color-danger-500;
+}
+
+.errorMessage {
+  margin-top: 0;
+
+  font-family: $font-family-primary;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-s;
+  color: $color-danger-500;
 }
 
 .myToday {

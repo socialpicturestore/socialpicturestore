@@ -1,4 +1,4 @@
-@use "../../styles/variables/colors" as colors;
+@use '../../styles/variables/colors' as colors;
 
 .tabGroup {
   display: flex;
@@ -23,9 +23,9 @@
 .tab {
   flex-grow: 1; // Табы занимают всю доступную ширину
   text-align: center; // Текст по центру
- // padding: 5px 5px; // Убираем горизонтальные отступы, оставляем только вертикальные
+  // padding: 5px 5px; // Убираем горизонтальные отступы, оставляем только вертикальные
   cursor: pointer;
-  min-width:85px;
+  min-width: 85px;
   min-height: 36px;
   position: relative; // Для позиционирования ::after
   transition: all 0.3s ease;
@@ -60,7 +60,7 @@
     &:hover {
       background-color: colors.$color-accent-900; // синее подчеркивание
 
-      &::after{
+      &::after {
         background-color: colors.$color-dark-100; // Светло-серое подчеркивание
       }
     }
@@ -70,14 +70,14 @@
       //outline: colors.$color-accent-700;
       background-color: colors.$color-accent-700;
 
-     // outline-offset: 2px;
+      // outline-offset: 2px;
     }
 
     // Disabled для неактивного таба
     &.disabled {
       color: colors.$color-dark-300; // Темно-серый текст
       cursor: not-allowed;
-     // opacity: 0.6;
+      // opacity: 0.6;
 
       &::after {
         background-color: colors.$color-dark-300; // Серое подчеркивание
@@ -86,7 +86,7 @@
 
     // Стили для неактивного таба с классом active
     &.active {
-      color: colors.$color-dark-100;// Текст остается темным
+      color: colors.$color-dark-100; // Текст остается темным
       background-color: colors.$color-accent-100;
       border: none; // Граница остается без изменений
 
@@ -101,7 +101,7 @@
     color: colors.$color-accent-500;
     //background-color: colors.$color-accent-100;
     background-color: transparent;
-   // border: 1px solid colors.$color-accent-500; // Граница становится синей
+    // border: 1px solid colors.$color-accent-500; // Граница становится синей
 
     // Нижнее подчеркивание для активного таба
     &::after {
@@ -137,7 +137,7 @@
 
     // Стили для активного таба с классом active
     &.active {
-      background-color: colors.$color-accent-100;; // Фон остается синим
+      background-color: colors.$color-accent-100; // Фон остается синим
 
       //&::after {
       //  background-color: $primary-color; // Подчеркивание остается синим
@@ -168,4 +168,3 @@
     //opacity: 0.6;
   }
 }
-

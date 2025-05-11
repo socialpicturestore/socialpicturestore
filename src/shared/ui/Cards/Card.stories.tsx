@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { Typography } from '../Typography/Typography'
 import { Button } from '../Button/Button'
-import { Card } from './Card'
+import { Card } from '../Cards/Card'
 
 const meta: Meta<typeof Card> = {
   title: 'Components/Card',

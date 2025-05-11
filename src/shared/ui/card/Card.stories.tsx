@@ -1,8 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { Card } from './Card'
-import { Input } from '../Input/Input'
-import { Button } from '../button/Button'
 import { Typography } from '../Typography/Typography'
+import { Button } from '../Button/Button'
 
 const meta: Meta<typeof Card> = {
   title: 'Components/Card',
@@ -32,11 +31,6 @@ export const CardWithAuth: Story = {
         </>
       }
     >
-      {/* <Input 
-          label="Email" 
-          variant="email" 
-          placeholder="Введите email" 
-        /> */}
       <input placeholder="Email" />
       <input placeholder="Password" />
     </Card>

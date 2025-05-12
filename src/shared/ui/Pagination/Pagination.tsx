@@ -4,7 +4,6 @@ import s from './Pagination.module.scss'
 import { DOTS, usePagination } from './usePagination'
 
 const ELEMENTS_ON_PAGE = [
-  { value: '2' },
   { value: '10' },
   { value: '20' },
   { value: '30' },
@@ -66,7 +65,6 @@ export const Pagination = (props: Type) => {
   })
 
   const lastPage = paginationRange[paginationRange.length - 1] as number
-  const firstPage = paginationRange[0] as number
 
   if (currentPage === 0 || totalCount === 0) {
     return null
@@ -94,11 +92,7 @@ export const Pagination = (props: Type) => {
           className={s.paginationItem}
           onClick={onPrevious}
         >
-          {currentPage === firstPage ? (
-            <ArrowIosBack width={'16'} height={'16'} />
-          ) : (
-            <ArrowIosBack width={'16'} height={'16'} />
-          )}
+          <ArrowIosBack width={'16'} height={'16'} />
         </div>
 
         {paginationRange.map((pageNumber, index) => {
@@ -141,11 +135,7 @@ export const Pagination = (props: Type) => {
           className={s.paginationItem}
           onClick={paginationRange.length === 1 ? () => {} : onNext}
         >
-          {paginationRange.length === 1 || currentPage === paginationRange.length ? (
-            <ArrowIosForward width={'16px'} height={'16px'} />
-          ) : (
-            <ArrowIosForward width={'16'} height={'16'} />
-          )}
+          <ArrowIosForward width={'16px'} height={'16px'} />
         </div>
       </div>
       <div className={s.selectBox}>

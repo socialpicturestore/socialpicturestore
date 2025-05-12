@@ -80,7 +80,6 @@ export const Pagination = (props: Type) => {
   const onChangeHandler = (value: string) => {
     onPageSizeChange(value)
   }
-  //const lastPage = paginationRange[paginationRange.length - 1]
 
   return (
     <div className={className ? `${className} ${s.wrapper}` : s.wrapper}>
@@ -102,14 +101,21 @@ export const Pagination = (props: Type) => {
           // убираем cursor: pointer с точек '...'
           if (pageNumber === DOTS) {
             return (
-              <div key={index} className={`${s.paginationItem} ${s.dots}`}>
+              <Typography
+                as={'div'}
+                variant={'regularText14'}
+                key={index}
+                className={`${s.paginationItem} ${s.dots}`}
+              >
                 {DOTS}
-              </div>
+              </Typography>
             )
           }
           // репндерим страницы пагинации
           return (
-            <div
+            <Typography
+              as={'div'}
+              variant={'regularText14'}
               key={index}
               className={
                 pageNumber === currentPage ? `${s.paginationItem} ${s.selected}` : s.paginationItem
@@ -117,7 +123,7 @@ export const Pagination = (props: Type) => {
               onClick={() => onPageChange(Number(pageNumber))}
             >
               {pageNumber}
-            </div>
+            </Typography>
           )
         })}
 

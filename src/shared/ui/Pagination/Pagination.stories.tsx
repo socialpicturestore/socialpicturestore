@@ -1,9 +1,9 @@
+import { Pagination } from '@/shared/ui'
 import { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
-import { Pagination } from './Pagination'
 
 const meta: Meta<typeof Pagination> = {
-  title: 'Pagination',
+  title: 'Components/Pagination',
   component: Pagination,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

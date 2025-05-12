@@ -4,7 +4,7 @@ import { Recaptcha } from './Recaptcha'
 type Story = StoryObj<typeof Recaptcha>
 
 const meta: Meta<typeof Recaptcha> = {
-  title: 'Widgets/Recaptcha',
+  title: 'Components/Recaptcha',
   component: Recaptcha,
   tags: ['autodocs'],
   argTypes: {

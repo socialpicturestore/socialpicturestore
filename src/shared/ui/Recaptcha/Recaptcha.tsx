@@ -29,19 +29,21 @@ const Recaptcha: React.FC<RecaptchaProps> = ({ state, onChange }) => {
               <Typography variant="regularText14">I'm not a robot</Typography>
             </div>
           ) : state === 'loading' ? (
-            <div>
+            <div className={styles.loadingblock}>
               <div className={styles.loadingIcon} /> {/* Анимированная крутилка */}
               <Typography variant="regularText14">I'm not a robot</Typography>
             </div>
           ) : (
-            <Checkbox
-              checked={isChecked}
-              onChange={onChange}
-              id="recaptcha-checkbox"
-              className={styles.check}
-            >
-              <Typography variant="regularText14">I'm not a robot</Typography>
-            </Checkbox>
+            <div className={styles.checkWrapper}>
+              <Checkbox
+                checked={isChecked}
+                onChange={onChange}
+                id="recaptcha-checkbox"
+                //className={styles.check}
+              >
+                <Typography variant="regularText14">I'm not a robot</Typography>
+              </Checkbox>
+            </div>
           )}
         </div>
 
@@ -49,16 +51,9 @@ const Recaptcha: React.FC<RecaptchaProps> = ({ state, onChange }) => {
         <div className={styles.rightBlock}>
           {/* Иконка ReCaptcha */}
           <RecaptchaIcon width="60" height="65" />
-
-          {/* Текст ReCaptcha */}
           <div>
-            {/*<Typography variant="regularText12" className={styles.text}>*/}
-            {/*  reCAPTCHA*/}
-            {/*</Typography>*/}
-            <Typography variant="smallLink">
-              <a href="#" className={styles.smtext}>
-                Privacy - Terms
-              </a>
+            <Typography variant="smallLink" className={styles.smtext}>
+              <a href="#">Privacy - Terms</a>
             </Typography>
           </div>
         </div>

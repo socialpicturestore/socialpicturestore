@@ -3,18 +3,17 @@
 
 /* Базовые стили для контейнера */
 .recaptcha {
+  position: relative; /* Необходимо для абсолютного позиционирования дочернего элемента */
+
   display: flex;
   flex-direction: column;
   gap: 16px; /* Отступ между элементами */
   align-items: center;
 
   width: 314px;
-  padding: 20px;
-  border: 1px solid #e0e0e0;
+  height: 124px;
 
   font-family: $font-family-primary;
-
-  background-color: transparent;
 
   /* Общий контейнер */
   & .container {
@@ -24,14 +23,24 @@
 
     width: 300px;
     height: 79px;
+    padding: 8px;
+    border: 1px solid $color-dark-300;
+
+    background-color: $color-dark-500;
   }
 
   /* Левый блок */
   & .leftBlock {
     display: flex;
     flex-direction: column;
-    gap: 8px;
     align-items: flex-start;
+    justify-content: center;
+
+    & .loadingblock {
+      display: flex;
+      column-gap: 15px;
+      align-items: center;
+    }
   }
 
   /* Правый блок */
@@ -44,69 +53,68 @@
     text-align: center;
 
     & .smtext {
-      font-size: 10px;
-      color: $color-light-100;
-      text-decoration: black;
+      margin: 0;
     }
 
-    & .error {
-      color: #f00;
+    & .smtext a {
+      font-size: 10px;
+      color: $color-light-100;
+      text-decoration: underline $color-dark-900;
     }
   }
 
   /* Сообщение об ошибке */
   & .error {
-    font-size: 12px;
-    color: #f00; /* Красный цвет для ошибки */
-    text-align: center;
+    position: absolute;
+    z-index: 10;
+    top: -9px;
+    left: -9px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 7px 8px;
+    border: 1px solid #f00;
+
+    font-size: 10px;
+    color: #f00;
+    text-align: justify;
+
+    background-color: transparent;
   }
 
   /* Истекший срок действия */
   & .expired {
+    width: 181px;
+    height: 24px;
+    margin: 0;
+
     font-size: 10px;
     color: #f00;
-    text-align: center;
+    text-align: start;
   }
 }
 
-/* Состояния */
-.recaptcha.default {
-  // border-color: #e0e0e0;
-}
-
-//.recaptcha.hover {
-//  border-color: #bdbdbd;
-//}
-
-//.recaptcha.checked {
-//  border-color: #19983b; /* Зеленый цвет для "checked" */
-//}
-
 .recaptcha.loading {
-  border-color: #1e88e5; /* Синий цвет для "loading" */
-}
-
-.recaptcha.error {
-  border-color: #d32f2f; /* Красный цвет для "error" */
+  border-color: #4d8df4; /* Синий цвет для "loading" */
 }
 
 .checkblock {
   display: flex;
+  column-gap: 5px;
   align-items: center;
   justify-content: flex-start;
-}
-
-.check {
-  :global(.Checkbox_base_CKwPF) {
-    background-color: $color-light-100 !important;
-  }
 }
 
 /* Анимированная крутилка */
 .recaptcha .loadingIcon {
   width: 20px;
   height: 20px;
-  border: 4px solid #1e88e5;
+  border: 4px solid #4d8df4;
   border-top-color: transparent;
   border-radius: 50%;
 
@@ -121,5 +129,12 @@
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+.recaptcha.checkWrapper {
+  :global(.Checkbox_buttonWrapper__0zfG1) {
+    border-color: #b7b7b7;
+    background-color: $color-light-100 !important;
   }
 }

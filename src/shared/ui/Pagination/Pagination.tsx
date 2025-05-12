@@ -86,7 +86,11 @@ export const Pagination = (props: Type) => {
       <div className={s.paginationContainer}>
         {/* стрелка навигации влево */}
         <div
-          style={paginationRange.length === 1 || currentPage === 1 ? { pointerEvents: 'none' } : {}}
+          style={
+            paginationRange.length === 1 || currentPage === 1
+              ? { pointerEvents: 'none', color: '#4C4C4C' }
+              : {}
+          }
           className={s.paginationItem}
           onClick={onPrevious}
         >
@@ -131,7 +135,7 @@ export const Pagination = (props: Type) => {
         <div
           style={
             paginationRange.length === 1 || currentPage === lastPage
-              ? { pointerEvents: 'none' }
+              ? { pointerEvents: 'none', color: '#4C4C4C' }
               : {}
           }
           className={s.paginationItem}

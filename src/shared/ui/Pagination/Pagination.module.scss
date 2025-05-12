@@ -1,0 +1,81 @@
+@use '../../styles/variables/typography' as *;
+@use '../../styles/variables/colors' as *;
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-light-100;
+  $font-size-s: 0.875rem;
+  $font-weight-regular: 400;
+  $line-height-m: 24px;
+}
+
+.paginationContainer {
+  display: flex;
+  margin-right: 24px;
+
+  .paginationItem {
+    text-align: center;
+    margin: auto 6px;
+    color: $color-light-100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 2px;
+    width: 24px;
+    height: 24px;
+    $font-size-s: 0.875rem;
+    $font-weight-regular: 400;
+    $line-height-m: 24px;
+
+    &.dots:hover {
+      background-color: transparent;
+      cursor: default;
+    }
+
+    &:hover {
+      background-color: $color-dark-500;
+      cursor: pointer;
+    }
+
+    &:focus {
+      border: 2px solid $color-accent-500;
+      //background-color: transparent;
+    }
+
+    &.selected {
+      color: $color-dark-900;
+      background-color: $color-light-100;
+    }
+
+    &.disabled {
+      pointer-events: none;
+
+      &:hover {
+        background-color: transparent;
+        cursor: default;
+      }
+    }
+  }
+}
+
+//.paginationSelect {
+//  width: 160px !important; // Force the width
+//
+//  // Target the internal elements of the Select component to apply border-radius
+//  //:global {
+//  //  .selectBox, // Target the main container class
+//  //  div[class*="selectBox"] { // More general selector as fallback
+//  //    border-radius: 4px !important;
+//  //    width: 60px !important;
+//  //  }
+//  //}
+//}
+
+.selectBox {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}

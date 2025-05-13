@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { FlagUnitedKingdom, LogOut, SettingsOutline } from '@/shared/assets/icons'
-import { Typography } from '@/shared/ui'
+import { Button, Typography } from '@/shared/ui'
 import { fn } from '@storybook/test'
-import { Button } from '@/shared/ui/button/Button'
 
 const meta: Meta = {
   title: 'Components/Button',
@@ -90,7 +89,7 @@ export const ButtonWithIcon: Story = {
     </Button>
   ),
   args: {
-    text: 'Back',
+    text: 'English',
     variant: 'withIcon',
   },
 }

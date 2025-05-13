@@ -77,6 +77,10 @@
 .inputBoxError {
   border-color: $color-danger-500;
   color: $color-danger-500;
+
+  &::placeholder {
+    color: $color-danger-500;
+  }
 }
 
 .errorMessage {
@@ -97,10 +101,6 @@
 .mySelected {
   border-radius: 24px;
   font-weight: $font-weight-regular;
-  background-color: $color-accent-900;
-}
-
-.myMultipleSelected {
   background-color: $color-accent-900;
 }
 
@@ -125,9 +125,12 @@
   background-color: $color-accent-900;
 }
 
-.myRangeHover {
-  background-color: $color-accent-900;
+.myHover:hover {
+  cursor: pointer;
+  border-radius: 24px;
+  background-color: $color-accent-700
 }
+
 
 .myNavBtn {
   cursor: pointer;

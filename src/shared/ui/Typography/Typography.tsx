@@ -7,6 +7,7 @@ export type TypographyProps<T extends ElementType = 'p'> = {
   children: ReactNode
   variant?:
     | 'large'
+    | 'small'
     | 'h1'
     | 'h2'
     | 'h3'

@@ -1,0 +1,77 @@
+@use '../../styles/variables/colors' as colors;
+@use '../../styles/variables/typography' as typo;
+
+.sidebarWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 220px;
+  min-height: 100vh;
+  max-height: 660px;
+  border-right: 1px solid colors.$color-dark-100;
+}
+
+.sidebarMenu {
+  display: flex;
+  flex-direction: column;
+  padding-left: 60px  ;
+}
+
+.mainBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: space-around;
+  padding-top: 72px;
+  list-style-type: none;
+}
+
+.secondBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: space-around;
+  padding-top: 60px;
+  list-style-type: none;
+
+}
+
+.footer {
+  padding-top: 180px;
+  list-style-type: none;
+}
+
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: colors.$color-light-100;
+  font-family: typo.$font-family-primary;
+  font-size: typo.$font-size-s;
+  font-weight: typo.$font-weight-medium;
+  line-height: typo.$line-height-m;
+  text-decoration: none;
+
+  &:hover {
+    color: colors.$color-accent-100;
+  }
+
+  &:focus {
+    border: 2px solid colors.$color-accent-700;
+    border-radius: 2px;
+  }
+
+  &:disabled {
+    color: colors.$color-dark-100;
+  }
+}
+
+.activeItem {
+  color: colors.$color-accent-500;
+  font-weight: typo.$font-weight-bold;
+}
+
+.disableItem {
+  color: colors.$color-dark-100;
+}

@@ -6,7 +6,7 @@ import {
   Home,
   HomeOutline,
   PlusSquare,
-  PlusCircleOutline,
+  PlusSquareOutline,
   Person,
   PersonOutline,
   MessageCircle,
@@ -44,7 +44,7 @@ const meta: Meta<typeof Sidebar> = {
         {
           id: 'create',
           label: 'Create',
-          icon: <PlusCircleOutline />,
+          icon: <PlusSquareOutline />,
           activeIcon: <PlusSquare />,
         },
         {
@@ -108,7 +108,7 @@ export const WithDisableIcons: Story = {
         {
           id: 'create',
           label: 'Create',
-          icon: <PlusCircleOutline />,
+          icon: <PlusSquareOutline />,
           activeIcon: <PlusSquare />,
         },
         {

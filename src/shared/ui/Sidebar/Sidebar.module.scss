@@ -14,7 +14,7 @@
 .sidebarMenu {
   display: flex;
   flex-direction: column;
-  padding-left: 60px  ;
+  padding-left: 60px;
 }
 
 .mainBlock {
@@ -33,11 +33,11 @@
   justify-content: space-around;
   padding-top: 60px;
   list-style-type: none;
-
 }
 
 .footer {
   padding-top: 180px;
+  padding-bottom: 36px;
   list-style-type: none;
 }
 
@@ -45,7 +45,6 @@
   display: flex;
   align-items: center;
   gap: 12px;
-
   color: colors.$color-light-100;
   font-family: typo.$font-family-primary;
   font-size: typo.$font-size-s;
@@ -55,6 +54,7 @@
 
   &:hover {
     color: colors.$color-accent-100;
+    cursor:pointer;
   }
 
   &:focus {
@@ -62,16 +62,16 @@
     border-radius: 2px;
   }
 
-  &:disabled {
+  &.disableItem {
     color: colors.$color-dark-100;
   }
-}
 
-.activeItem {
-  color: colors.$color-accent-500;
-  font-weight: typo.$font-weight-bold;
-}
+  &.activeItem {
+    color: colors.$color-accent-500;
+    font-weight: typo.$font-weight-bold;
+  }
 
-.disableItem {
-  color: colors.$color-dark-100;
+  &.itemIcon {
+    height: 24; 
+  }
 }

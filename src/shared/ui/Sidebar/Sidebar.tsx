@@ -79,7 +79,7 @@ export const Sidebar = forwardRef<HTMLAnchorElement, SidebarProps>(
                   onClick={() => !item.disabled && onItemClick(item.id)}
                 >
                   {iconToShow && (
-                    <span className={`${activeItemId === item.id ? styles.activeIconItem : ''}`}>
+                    <span className={styles.itemIcon}>
                       {iconToShow}
                     </span>
                   )}

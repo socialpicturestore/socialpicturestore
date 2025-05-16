@@ -11,7 +11,7 @@
         cursor: not-allowed;
 
         svg {
-          color: colors.$color-dark-100;
+          color: $color-dark-100;
         }
       }
     }
@@ -30,14 +30,14 @@
   // Search icon становится белой при фокусе
   &:focus-within {
     .inputIcon.startIcon svg {
-      color: colors.$color-light-100;
+      color: $color-light-100;
     }
   }
 
   // Search icon становится белой при активном (mousedown)
   &:active {
     .inputIcon.startIcon svg {
-      color: colors.$color-light-100;
+      color: $color-light-100;
     }
   }
 }
@@ -50,10 +50,10 @@
   padding: 8px 12px;
   transition: border-color 0.2s;
 
-  font-family: typo.$font-family-primary;
-  font-size: typo.$font-size-m;
-  font-weight: typo.$font-weight-regular;
-  line-height: typo.$line-height-m;
+  font-family: $font-family-primary;
+  font-size: $font-size-m;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-m;
 
   &::placeholder {
     font-size: 16px;
@@ -117,7 +117,7 @@
     left: 12px;
 
     svg {
-      color: colors.$color-light-900;
+      color: $color-light-900;
     }
   }
 
@@ -125,7 +125,7 @@
     right: 12px;
 
     svg {
-      color: colors.$color-light-100;
+      color: $color-light-100;
     }
   }
 }

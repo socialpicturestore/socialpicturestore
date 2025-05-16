@@ -1,5 +1,5 @@
+import { Recaptcha } from '@/shared/ui'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Recaptcha } from './Recaptcha'
 
 type Story = StoryObj<typeof Recaptcha>
 

@@ -1,5 +1,5 @@
+import { Tab } from '@/shared/ui'
 import React from 'react'
-import { Tab } from './Tab'
 import type { Meta, StoryObj } from '@storybook/react'
 
 // Типы пропсов компонента Tab

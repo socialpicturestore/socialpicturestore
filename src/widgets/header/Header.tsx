@@ -1,8 +1,7 @@
 import React from 'react'
 import s from './Header.module.scss'
-import { SelectBox, Typography } from '@/shared/ui'
+import { Button, SelectBox, Typography } from '@/shared/ui'
 import { BellOutlineIcon, FlagRussia, FlagUnitedKingdom } from '@/shared/assets/icons'
-import { Button } from '@/shared/ui/button/Button'
 
 const options = [
   { value: 'Russian', icon: <FlagRussia /> },

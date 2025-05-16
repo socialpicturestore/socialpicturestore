@@ -1,7 +1,6 @@
-import type { Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { Scroll } from './Scroll'
-import { Typography } from '@/shared/ui'
+import { Scroll, Typography } from '@/shared/ui'
 
 const meta: Meta<typeof Scroll> = {
   component: Scroll,
@@ -11,9 +10,11 @@ const meta: Meta<typeof Scroll> = {
 
 export default meta
 
+type Story = StoryObj<typeof Scroll>
+
 const tags = Array.from({ length: 50 }).map((_, i, a) => `example0${a.length - i}  `)
 
-export const Vertical = {
+export const Vertical: Story = {
   args: {
     style: { padding: '5px' },
     height: 220,
@@ -24,7 +25,7 @@ export const Vertical = {
   },
 }
 
-export const Horizontal = {
+export const Horizontal: Story = {
   args: {
     width: 200,
     style: { padding: '5px' },
@@ -34,7 +35,7 @@ export const Horizontal = {
   },
 }
 
-export const Mix = {
+export const Mix: Story = {
   args: {
     type: 'hover',
     style: { padding: '5px' },

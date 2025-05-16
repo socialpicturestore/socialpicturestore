@@ -1,4 +1,4 @@
-@use '../../styles/variables/colors' as colors;
+@use '../../styles/index.scss' as *;
 
 .tabGroup {
   display: flex;
@@ -42,102 +42,102 @@
     bottom: -1px;
     width: 100%;
     height: 3px; // Толщина подчеркивания
-    background-color: colors.$color-dark-100; // По умолчанию прозрачное
+    background-color: $color-dark-100; // По умолчанию прозрачное
     transition: all 0.3s ease; // Плавная анимация
   }
 
   // Неактивный таб по умолчанию
   &:not(.active) {
-    color: colors.$color-dark-100;
+    color: $color-dark-100;
     background-color: transparent;
 
     // Нижнее подчеркивание для неактивного таба
     &::after {
-      background-color: colors.$color-dark-100; // Серое подчеркивание
+      background-color: $color-dark-100; // Серое подчеркивание
     }
 
     // Hover для неактивного таба
     &:hover {
-      background-color: colors.$color-accent-900; // синее подчеркивание
+      background-color: $color-accent-900; // синее подчеркивание
 
       &::after {
-        background-color: colors.$color-dark-100; // Светло-серое подчеркивание
+        background-color: $color-dark-100; // Светло-серое подчеркивание
       }
     }
 
     // Focus для неактивного таба
     &:focus {
       //outline: colors.$color-accent-700;
-      background-color: colors.$color-accent-700;
+      background-color: $color-accent-700;
 
       // outline-offset: 2px;
     }
 
     // Disabled для неактивного таба
     &.disabled {
-      color: colors.$color-dark-300; // Темно-серый текст
+      color: $color-dark-300; // Темно-серый текст
       cursor: not-allowed;
       // opacity: 0.6;
 
       &::after {
-        background-color: colors.$color-dark-300; // Серое подчеркивание
+        background-color: $color-dark-300; // Серое подчеркивание
       }
     }
 
     // Стили для неактивного таба с классом active
     &.active {
-      color: colors.$color-dark-100; // Текст остается темным
-      background-color: colors.$color-accent-100;
+      color: $color-dark-100; // Текст остается темным
+      background-color: $color-accent-100;
       border: none; // Граница остается без изменений
 
       &::after {
-        background-color: colors.$color-dark-100; // Подчеркивание остается серым
+        background-color: $color-dark-100; // Подчеркивание остается серым
       }
     }
   }
 
   // Активный таб по умолчанию
   &.active {
-    color: colors.$color-accent-500;
+    color: $color-accent-500;
     //background-color: colors.$color-accent-100;
     background-color: transparent;
     // border: 1px solid colors.$color-accent-500; // Граница становится синей
 
     // Нижнее подчеркивание для активного таба
     &::after {
-      background-color: colors.$color-accent-500; // Синее подчеркивание
+      background-color: $color-accent-500; // Синее подчеркивание
     }
 
     // Hover для активного таба
     &:hover {
-      color: colors.$color-accent-500;
-      background-color: colors.$color-accent-900; // Темно-синее подчеркивание
+      color: $color-accent-500;
+      background-color: $color-accent-900; // Темно-синее подчеркивание
 
       &::after {
-        background-color: colors.$color-accent-500; // Синее подчеркивание
+        background-color: $color-accent-500; // Синее подчеркивание
       }
     }
 
     // Focus для активного таба
     &:focus {
-      outline: 2px solid colors.$color-accent-700; // Белый контур
+      outline: 2px solid $color-accent-700; // Белый контур
       //outline-offset: 2px;
     }
 
     // Disabled для активного таба
     &.disabled {
-      color: colors.$color-accent-900; // Темно-синий текст
+      color: $color-accent-900; // Темно-синий текст
       cursor: not-allowed;
       //opacity: 0.6;
 
       &::after {
-        background-color: colors.$color-accent-900; // Темно-синее подчеркивание
+        background-color: $color-accent-900; // Темно-синее подчеркивание
       }
     }
 
     // Стили для активного таба с классом active
     &.active {
-      background-color: colors.$color-accent-100; // Фон остается синим
+      background-color: $color-accent-100; // Фон остается синим
 
       //&::after {
       //  background-color: $primary-color; // Подчеркивание остается синим
@@ -153,17 +153,17 @@
 
   // Стили для неактивного таба
   &.default {
-    color: colors.$color-dark-100; // Серый цвет текста для неактивного таба
+    color: $color-dark-100; // Серый цвет текста для неактивного таба
   }
 
   // Стили для активного таба
   &.accent {
-    color: colors.$color-accent-500; // Синий цвет текста для активного таба
+    color: $color-accent-500; // Синий цвет текста для активного таба
   }
 
   // Стили для отключенного таба
   &.disabled {
-    color: colors.$color-dark-300; // Темно-серый текст для отключенного таба
+    color: $color-dark-300; // Темно-серый текст для отключенного таба
     cursor: not-allowed;
     //opacity: 0.6;
   }

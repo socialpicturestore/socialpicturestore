@@ -54,7 +54,10 @@ const SelectBox = forwardRef<HTMLButtonElement, SelectProps>(
           onOpenChange={handleOpenChange}
           disabled={disabled}
         >
-          <Select.Trigger ref={localTriggerRef} className={clsx(styles[variant], styles.trigger)}>
+          <Select.Trigger
+            ref={localTriggerRef}
+            className={clsx(variant && styles[variant], styles.trigger)}
+          >
             <div className={styles.triggerValue}>
               {selectedOption?.icon && <span className={styles.icon}>{selectedOption.icon}</span>}
               {variant !== 'mobileLang' ? (
@@ -71,7 +74,7 @@ const SelectBox = forwardRef<HTMLButtonElement, SelectProps>(
                 width: variant !== 'mobileLang' ? contentWidth : 'inherit',
                 maxHeight: SELECT_CONTENT_VISIBLE_HEIGHT,
               }}
-              className={clsx(styles.content, styles[variant])}
+              className={clsx(styles.content, variant && styles[variant])}
               position="popper"
               sideOffset={-1}
             >

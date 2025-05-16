@@ -1,6 +1,4 @@
-@use '../../styles/variables/colors' as colors;
-@use '../../styles/variables/typography' as typo;
-
+@use '../../styles/index.scss' as *;
 
 .inputWrapper {
   display: flex;
@@ -21,7 +19,7 @@
 }
 
 .inputLabel {
-  color: colors.$color-light-900;
+  color: $color-light-900;
 }
 
 .inputInnerWrapper {
@@ -47,7 +45,7 @@
 .inputField {
   width: 100%;
   background: transparent;
-  border: 1px solid colors.$color-dark-100;
+  border: 1px solid $color-dark-100;
   border-radius: 6px;
   padding: 8px 12px;
   transition: border-color 0.2s;
@@ -61,7 +59,7 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
-    color: colors.$color-light-900;
+    color: $color-light-900;
   }
 
   // Отступы для иконок
@@ -74,29 +72,29 @@
   }
 
   &:hover {
-    border-color: colors.$color-light-900;
+    border-color: $color-light-900;
   }
 
   &:focus {
-    border-color: colors.$color-accent-500;
+    border-color: $color-accent-500;
     outline: none;
   }
 
   &:active {
-    border-color: colors.$color-light-100;
+    border-color: $color-light-100;
   }
 
   &.inputError {
-    border-color: colors.$color-danger-500;
+    border-color: $color-danger-500;
 
     &:focus {
-      border-color: colors.$color-danger-500;
+      border-color: $color-danger-500;
     }
   }
 
   &.inputDisabled {
-    color: colors.$color-dark-100;
-    border-color: colors.$color-dark-100;
+    color: $color-dark-100;
+    border-color: $color-dark-100;
     cursor: not-allowed;
     opacity: 0.5;
   }
@@ -110,9 +108,10 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
+
+  svg {
+    color: $color-light-100;
+  }
 
   &.startIcon {
     left: 12px;
@@ -132,5 +131,5 @@
 }
 
 .inputErrorMessage {
-  color: colors.$color-danger-500;
+  color: $color-danger-500;
 }

@@ -1,0 +1,176 @@
+@use '../../styles/variables/typography' as *;
+@use '../../styles/variables/colors' as *;
+
+.calendarWrapper {
+  position: absolute;
+
+  max-width: 300px;
+  padding: 16px 20px;
+  border: 1px solid $color-dark-300;
+  border-radius: 2px;
+
+  font-family: $font-family-primary;
+  font-size: $font-size-m;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-s;
+
+  background-color: $color-dark-500;
+}
+
+.customDaypicker {
+  --rdp-accent-color: none;
+
+  color: $color-light-100;
+  background-color: $color-dark-500;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.calendarIcon {
+  cursor: pointer;
+  position: absolute;
+  right: 6px;
+  height: 20px;
+}
+
+.inputBox {
+  cursor: pointer;
+
+  width: 100%;
+  height: 36px;
+  padding-left: 12px;
+  border: 1px solid $color-dark-300;
+  border-radius: 2px;
+
+  font-family: $font-family-primary;
+  font-size: $font-size-m;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-s;
+  color: $color-light-100;
+
+  background-color: transparent;
+  outline: none;
+
+  &:hover {
+    background-color: $color-dark-500;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: $color-dark-300;
+    background-color: $color-dark-500;
+  }
+}
+
+.inputBoxOpen {
+  background-color: $color-dark-500;
+}
+
+.inputBoxClose {
+  background-color: transparent;
+}
+
+.inputBoxError {
+  border-color: $color-danger-500;
+  color: $color-danger-500;
+
+  &::placeholder {
+    color: $color-danger-500;
+  }
+}
+
+.errorMessage {
+  margin-top: 0;
+
+  font-family: $font-family-primary;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-s;
+  color: $color-danger-500;
+}
+
+.myToday {
+  font-weight: $font-weight-bold;
+  color: $color-accent-500;
+}
+
+.mySelected {
+  border-radius: 24px;
+  font-weight: $font-weight-regular;
+  background-color: $color-accent-900;
+}
+
+.myRangeStart {
+  border-radius: 24px 0 0 24px;
+  font-size: $font-size-m;
+  font-weight: $font-weight-regular;
+  background-color: $color-accent-900;
+}
+
+.myRangeMiddle {
+  border-radius: 0;
+  font-size: $font-size-m;
+  font-weight: $font-weight-regular;
+  background-color: $color-accent-900;
+}
+
+.myRangeEnd {
+  border-radius: 0 24px 24px 0;
+  font-size: $font-size-m;
+  font-weight: $font-weight-regular;
+  background-color: $color-accent-900;
+}
+
+.myHover:hover {
+  cursor: pointer;
+  border-radius: 24px;
+  background-color: $color-accent-700
+}
+
+
+.myNavBtn {
+  cursor: pointer;
+
+  padding: 8px;
+  border: none;
+  border-radius: 24px;
+
+  line-height: 0;
+  color: $color-light-100;
+
+  background-color: $color-dark-100;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: $color-light-100;
+    transition: fill 0.2s;
+  }
+
+  &:hover svg {
+    fill: $color-light-900;
+  }
+}
+
+.myWeekend {
+  color: $color-danger-300;
+}
+
+.myOutside {
+  color: $color-light-900;
+}
+
+.myCaptionLabel {
+  position: absolute;
+  top: 15px;
+  left: 12px
+}
+
+.result {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}

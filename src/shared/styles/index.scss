@@ -1,2 +1,2 @@
-@use './variables/colors' as colors;
-@use './variables/typography' as typography;
+@forward './colors';
+@forward './typography';

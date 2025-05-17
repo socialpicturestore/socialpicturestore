@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useId, useRef, useState } from 'react'
 import 'react-day-picker/style.css'
 import clsx from 'classnames'

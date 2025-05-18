@@ -1,5 +1,4 @@
-@use '../../styles/variables/typography' as *;
-@use '../../styles/variables/colors' as *;
+@use '../../styles/index.scss' as *;
 
 @mixin button {
   $font-family-primary: 'Inter', sans-serif;
@@ -8,6 +7,7 @@
 
   display: inline-flex;
   align-items: center;
+  justify-content: center;
 
   padding: 6px 24px;
   border: none;

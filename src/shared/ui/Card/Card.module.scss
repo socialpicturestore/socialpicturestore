@@ -1,4 +1,4 @@
-@use '../../styles/variables/colors.scss' as colors;
+@use '../../styles/index.scss' as *;
 
 .cardWrapper {
   display: flex;
@@ -11,26 +11,26 @@
   margin: auto;
   min-width: 100px;
   min-height: 100px;
-  border: 1px solid colors.$color-dark-100;
-  background-color: colors.$color-dark-500;
+  border: 1px solid $color-dark-100;
+  background-color: $color-dark-500;
   border-radius: 2px;
 }
 
 .cardHeader {
-    margin: 10px;
+  margin: 10px;
 }
 
 .cardFooter {
-    display: flex;
-    justify-content: space-between;
-    gap: 5px;
-    margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  margin: 10px;
 }
 
 .cardContent {
-    display: flex;
-    flex-direction: column;
-    align-content: space-between;
-    margin: 10px;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  margin: 10px;
+  gap: 10px;
 }

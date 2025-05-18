@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import Modal from '@/widgets/modal/Modal'
+import Modal from '@/shared/ui/modal/Modal'
 import React, { useState } from 'react'
 import { Button, Input, Typography } from '@/shared/ui'
 

@@ -11,8 +11,6 @@ export * from './Checkbox/Checkbox'
 export * from './Recaptcha/Recaptcha'
 export * from './Scroll/Scroll'
 export * from './Sidebar/Sidebar'
-export * from './Sidebar/Sidebar'
 export * from './DatePicker/DatePicker'
-=========
-export * from './Sidebar/Sidebar'
->>>>>>>>> Temporary merge branch 2
+export * from './TextArea/TextArea'
+

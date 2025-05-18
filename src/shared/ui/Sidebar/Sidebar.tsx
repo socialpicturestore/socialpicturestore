@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react'
 import styles from './Sidebar.module.scss'
-import Link from 'next/link'
 
 interface SidebarItem {
   id: string
@@ -8,6 +7,7 @@ interface SidebarItem {
   icon: React.ReactNode
   activeIcon?: React.ReactNode // Optional active icon
   disabled?: boolean
+  href: string
 }
 
 interface SidebarProps {
@@ -20,8 +20,7 @@ interface SidebarProps {
   onItemClick: (id: string) => void
 }
 
-export const Sidebar = forwardRef<HTMLAnchorElement, SidebarProps>(
-  ({ items, activeItemId, onItemClick }, ref) => {
+export const Sidebar = ({ items, activeItemId, onItemClick }:SidebarProps) => {
     return (
       <div className={styles.sidebarWrapper}>
         <nav className={styles.sidebarMenu}>
@@ -33,13 +32,12 @@ export const Sidebar = forwardRef<HTMLAnchorElement, SidebarProps>(
                 <a
                   key={item.id}
                   className={`${styles.sidebarItem} 
-              ${activeItemId === item.id ? styles.activeItem : ''}
-              ${item.disabled ? styles.disableItem : ''}`}
+                  ${activeItemId === item.id ? styles.activeItem : ''}
+                  ${item.disabled ? styles.disableItem : ''}`}
                   onClick={() => !item.disabled && onItemClick(item.id)}
-                  ref={ref}
                 >
                   {iconToShow && <span className={styles.itemIcon}>{iconToShow}</span>}
-                  <span className="sidebar-label">{item.label}</span>
+                  <span>{item.label}</span>
                 </a>
               )
             })}
@@ -52,16 +50,12 @@ export const Sidebar = forwardRef<HTMLAnchorElement, SidebarProps>(
                 <a
                   key={item.id}
                   className={`${styles.sidebarItem} 
-              ${activeItemId === item.id ? styles.activeItem : ''}
-              ${item.disabled ? styles.disableItem : ''}`}
+                  ${activeItemId === item.id ? styles.activeItem : ''}
+                  ${item.disabled ? styles.disableItem : ''}`}
                   onClick={() => !item.disabled && onItemClick(item.id)}
                 >
-                  {iconToShow && (
-                    <span className={`${activeItemId === item.id ? styles.activeIconItem : ''}`}>
-                      {iconToShow}
-                    </span>
-                  )}
-                  <span className="sidebar-label">{item.label}</span>
+                  {iconToShow && <span className={styles.itemIcon}>{iconToShow}</span>}
+                  <span>{item.label}</span>
                 </a>
               )
             })}
@@ -74,16 +68,12 @@ export const Sidebar = forwardRef<HTMLAnchorElement, SidebarProps>(
                 <a
                   key={item.id}
                   className={`${styles.sidebarItem} 
-              ${activeItemId === item.id ? styles.activeItem : ''}
-              ${item.disabled ? styles.disableItem : ''}`}
+                  ${activeItemId === item.id ? styles.activeItem : ''}
+                  ${item.disabled ? styles.disableItem : ''}`}
                   onClick={() => !item.disabled && onItemClick(item.id)}
                 >
-                  {iconToShow && (
-                    <span className={styles.itemIcon}>
-                      {iconToShow}
-                    </span>
-                  )}
-                  <span className="sidebar-label">{item.label}</span>
+                  {iconToShow && <span className={styles.itemIcon}>{iconToShow}</span>}
+                  <span>{item.label}</span>
                 </a>
               )
             })}
@@ -92,4 +82,3 @@ export const Sidebar = forwardRef<HTMLAnchorElement, SidebarProps>(
       </div>
     )
   }
-)

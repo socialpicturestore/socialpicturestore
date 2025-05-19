@@ -14,30 +14,19 @@
   display: flex;
   flex-direction: column;
   padding-left: 60px;
-}
-
-.mainBlock {
-  display: flex;
-  flex-direction: column;
   gap: 24px;
-  justify-content: space-around;
   padding-top: 72px;
-  list-style-type: none;
-}
-
-.secondBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  justify-content: space-around;
-  padding-top: 60px;
-  list-style-type: none;
 }
 
 .footer {
-  padding-top: 180px;
   padding-bottom: 36px;
   list-style-type: none;
+  color: $color-light-100;
+  font-family: $font-family-primary;
+  font-size: $font-size-s;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-m;
+  padding-left: 60px;
 }
 
 .sidebarItem {

@@ -24,64 +24,82 @@ import {
 const meta: Meta<typeof Sidebar> = {
   title: 'Components/Sidebar',
   component: Sidebar,
-  tags:['autodocs'],
+  tags: ['autodocs'],
   argTypes: {
     activeItemId: {
       control: 'select',
-      options: ['home', 'create', 'profile', 'message', 'search', null],
+      options: [
+        'home',
+        'create',
+        'profile',
+        'message',
+        'search',
+        'statistics',
+        'favorites',
+        'logout',
+        null,
+      ],
       description: 'Currently active item ID',
     },
   },
   args: {
-    items: {
-      mainBlock: [
-        {
-          id: 'home',
-          label: 'Home',
-          icon: <HomeOutline />,
-          activeIcon: <Home />,
-        },
-        {
-          id: 'create',
-          label: 'Create',
-          icon: <PlusSquareOutline />,
-          activeIcon: <PlusSquare />,
-        },
-        {
-          id: 'profile',
-          label: 'My Profile',
-          icon: <PersonOutline />,
-          activeIcon: <Person />,
-        },
-        {
-          id: 'message',
-          label: 'Messages',
-          icon: <MessageCircleOutline />,
-          activeIcon: <MessageCircle />,
-        },
-        {
-          id: 'search',
-          label: 'Search',
-          icon: <SearchOutline />,
-          activeIcon: <Search />,
-        },
-      ],
-      secondBlock: [
-        { id: 'statistics', 
-          label: 'Statistics', 
-          icon: <TrendingUpOutline />, 
-          activeIcon: <TrendingUp /> 
-        },
-        { id: 'favorites', 
-          label: 'Favorites', 
-          icon: <BookmarkOutline />, 
-          activeIcon: <Bookmark /> 
-        },
-      ],
-      footer: [{ id: 'logout', 
-        label: 'Log Out', 
-        icon: <LogOutOutline />,
-         activeIcon: <LogOut /> }],
+    items: [
+      {
+        id: 'home',
+        label: 'Home',
+        icon: <HomeOutline />,
+        activeIcon: <Home />,
+        href: '#',
+      },
+      {
+        id: 'create',
+        label: 'Create',
+        icon: <PlusSquareOutline />,
+        activeIcon: <PlusSquare />,
+        href: '#',
+      },
+      {
+        id: 'profile',
+        label: 'My Profile',
+        icon: <PersonOutline />,
+        activeIcon: <Person />,
+        href: '#',
+      },
+      {
+        id: 'message',
+        label: 'Messages',
+        icon: <MessageCircleOutline />,
+        activeIcon: <MessageCircle />,
+        href: '#',
+      },
+      {
+        id: 'search',
+        label: 'Search',
+        icon: <SearchOutline />,
+        activeIcon: <Search />,
+        href: '#',
+      },
+      {
+        id: 'statistics',
+        label: 'Statistics',
+        icon: <TrendingUpOutline />,
+        activeIcon: <TrendingUp />,
+        href: '#',
+      },
+      {
+        id: 'favorites',
+        label: 'Favorites',
+        icon: <BookmarkOutline />,
+        activeIcon: <Bookmark />,
+        href: '#',
+      },
+    ],
+    logout: {
+      id: 'logout',
+      label: 'LogOut',
+      icon: <LogOutOutline />,
+      activeIcon: <LogOut />,
+      href: '#',
     },
     activeItemId: null,
     onItemClick: id => console.log('Item clicked:', id),
@@ -96,58 +114,65 @@ export const Default: Story = {}
 
 export const WithDisableIcons: Story = {
   args: {
-    items: {
-      mainBlock: [
-        {
-          id: 'home',
-          label: 'Home',
-          icon: <HomeOutline />,
-          activeIcon: <Home />,
-          disabled: true
-        },
-        {
-          id: 'create',
-          label: 'Create',
-          icon: <PlusSquareOutline />,
-          activeIcon: <PlusSquare />,
-        },
-        {
-          id: 'profile',
-          label: 'My Profile',
-          icon: <PersonOutline />,
-          activeIcon: <Person />,
-        },
-        {
-          id: 'message',
-          label: 'Messages',
-          icon: <MessageCircleOutline />,
-          activeIcon: <MessageCircle />,
-        },
-        {
-          id: 'search',
-          label: 'Search',
-          icon: <SearchOutline />,
-          activeIcon: <Search />,
-        },
-      ],
-      secondBlock: [
-        { id: 'statistics', 
-          label: 'Statistics', 
-          icon: <TrendingUpOutline />, 
-          activeIcon: <TrendingUp /> 
-        },
-        { id: 'favorites', 
-          label: 'Favorites', 
-          icon: <BookmarkOutline />, 
-          activeIcon: <Bookmark /> 
-        },
-      ],
-      footer: [{ id: 'logout', 
-        label: 'Log Out', 
-        icon: <LogOutOutline />,
-         activeIcon: <LogOut /> }],
+    items: [
+      {
+        id: 'home',
+        label: 'Home',
+        icon: <HomeOutline />,
+        activeIcon: <Home />,
+        href: '#',
+        disabled: true,
+      },
+      {
+        id: 'create',
+        label: 'Create',
+        icon: <PlusSquareOutline />,
+        activeIcon: <PlusSquare />,
+        href: '#',
+      },
+      {
+        id: 'profile',
+        label: 'My Profile',
+        icon: <PersonOutline />,
+        activeIcon: <Person />,
+        href: '#',
+      },
+      {
+        id: 'message',
+        label: 'Messages',
+        icon: <MessageCircleOutline />,
+        activeIcon: <MessageCircle />,
+        href: '#',
+      },
+      {
+        id: 'search',
+        label: 'Search',
+        icon: <SearchOutline />,
+        activeIcon: <Search />,
+        href: '#',
+      },
+      {
+        id: 'statistics',
+        label: 'Statistics',
+        icon: <TrendingUpOutline />,
+        activeIcon: <TrendingUp />,
+        href: '#',
+      },
+      {
+        id: 'favorites',
+        label: 'Favorites',
+        icon: <BookmarkOutline />,
+        activeIcon: <Bookmark />,
+        href: '#',
+      },
+    ],
+    logout: {
+      id: 'logout',
+      label: 'LogOut',
+      icon: <LogOutOutline />,
+      activeIcon: <LogOut />,
+      href: '#',
     },
-    
   },
   parameters: {
     pseudo: { hover: false },

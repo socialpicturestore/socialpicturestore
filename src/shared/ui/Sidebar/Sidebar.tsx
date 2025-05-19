@@ -1,4 +1,3 @@
-import React, { forwardRef } from 'react'
 import styles from './Sidebar.module.scss'
 
 interface SidebarItem {
@@ -11,74 +10,49 @@ interface SidebarItem {
 }
 
 interface SidebarProps {
-  items: {
-    mainBlock: SidebarItem[]
-    secondBlock: SidebarItem[]
-    footer: SidebarItem[]
-  }
+  items: SidebarItem[]
+  logout: SidebarItem
   activeItemId: string | null
   onItemClick: (id: string) => void
 }
 
-export const Sidebar = ({ items, activeItemId, onItemClick }:SidebarProps) => {
-    return (
-      <div className={styles.sidebarWrapper}>
-        <nav className={styles.sidebarMenu}>
-          <div className={styles.mainBlock}>
-            {items.mainBlock.map(item => {
-              const iconToShow =
-                activeItemId === item.id && item.activeIcon ? item.activeIcon : item.icon
-              return (
-                <a
-                  key={item.id}
-                  className={`${styles.sidebarItem} 
+export const Sidebar = ({ items, logout, activeItemId, onItemClick }: SidebarProps) => {
+  return (
+    <div className={styles.sidebarWrapper}>
+      <nav className={styles.sidebarMenu}>
+        {items.map(item => {
+          const iconToShow =
+            activeItemId === item.id && item.activeIcon ? item.activeIcon : item.icon
+          return (
+            <a
+              key={item.id}
+              className={`${styles.sidebarItem} 
                   ${activeItemId === item.id ? styles.activeItem : ''}
                   ${item.disabled ? styles.disableItem : ''}`}
-                  onClick={() => !item.disabled && onItemClick(item.id)}
-                >
-                  {iconToShow && <span className={styles.itemIcon}>{iconToShow}</span>}
-                  <span>{item.label}</span>
-                </a>
-              )
-            })}
-          </div>
-          <div className={styles.secondBlock}>
-            {items.secondBlock.map(item => {
-              const iconToShow =
-                activeItemId === item.id && item.activeIcon ? item.activeIcon : item.icon
-              return (
-                <a
-                  key={item.id}
-                  className={`${styles.sidebarItem} 
-                  ${activeItemId === item.id ? styles.activeItem : ''}
-                  ${item.disabled ? styles.disableItem : ''}`}
-                  onClick={() => !item.disabled && onItemClick(item.id)}
-                >
-                  {iconToShow && <span className={styles.itemIcon}>{iconToShow}</span>}
-                  <span>{item.label}</span>
-                </a>
-              )
-            })}
-          </div>
-          <div className={styles.footer}>
-            {items.footer.map(item => {
-              const iconToShow =
-                activeItemId === item.id && item.activeIcon ? item.activeIcon : item.icon
-              return (
-                <a
-                  key={item.id}
-                  className={`${styles.sidebarItem} 
-                  ${activeItemId === item.id ? styles.activeItem : ''}
-                  ${item.disabled ? styles.disableItem : ''}`}
-                  onClick={() => !item.disabled && onItemClick(item.id)}
-                >
-                  {iconToShow && <span className={styles.itemIcon}>{iconToShow}</span>}
-                  <span>{item.label}</span>
-                </a>
-              )
-            })}
-          </div>
-        </nav>
-      </div>
-    )
-  }
+              onClick={() => !item.disabled && onItemClick(item.id)}
+            >
+              {iconToShow && <span className={styles.itemIcon}>{iconToShow}</span>}
+              <span>{item.label}</span>
+            </a>
+          )
+        })}
+      </nav>
+      <footer className={styles.footer}>
+        <a
+          key={logout.id}
+          className={`${styles.sidebarItem} 
+                  ${activeItemId === logout.id ? styles.activeItem : ''}
+                  ${logout.disabled ? styles.disableItem : ''}`}
+          onClick={() => !logout.disabled && onItemClick(logout.id)}
+        >
+          {activeItemId === logout.id && logout.activeIcon ? (
+            <span className={styles.itemIcon}>{logout.activeIcon}</span>
+          ) : (
+            <span className={styles.itemIcon}>{logout.icon}</span>
+          )}
+          <span>{logout.label}</span>
+        </a>
+      </footer>
+    </div>
+  )
+}

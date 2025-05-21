@@ -1,0 +1,66 @@
+@use '../../styles/index.scss' as *;
+
+.sidebarWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 220px;
+  min-height: 100vh;
+  max-height: 660px;
+  border-right: 1px solid $color-dark-100;
+}
+
+.sidebarMenu {
+  display: flex;
+  flex-direction: column;
+  padding-left: 60px;
+  gap: 24px;
+  padding-top: 72px;
+}
+
+.footer {
+  padding-bottom: 36px;
+  list-style-type: none;
+  color: $color-light-100;
+  font-family: $font-family-primary;
+  font-size: $font-size-s;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-m;
+  padding-left: 60px;
+}
+
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: $color-light-100;
+  font-family: $font-family-primary;
+  font-size: $font-size-s;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-m;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-accent-100;
+    cursor: pointer;
+  }
+
+  &:focus {
+    border: 2px solid $color-accent-700;
+    border-radius: 2px;
+  }
+
+  &.disableItem {
+    color: $color-dark-100;
+  }
+
+  &.activeItem {
+    color: $color-accent-500;
+    font-weight: $font-weight-bold;
+  }
+}
+
+.itemIcon {
+  display: inline-flex;
+  align-items: center;
+}

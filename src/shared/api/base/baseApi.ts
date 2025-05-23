@@ -51,7 +51,7 @@ export const baseQueryWithReauth: BaseQueryFn<
 
         if (refreshResult.data) {
           /* сохраняем новый токен в storage */
-          localStorage.setItem(
+          sessionStorage.setItem(
             'accessToken',
             (refreshResult.data as { accessToken: string }).accessToken
           )
@@ -61,7 +61,7 @@ export const baseQueryWithReauth: BaseQueryFn<
           /* очищаем store, если не удалось получить новую пару access refresh */
           baseApi.util.resetApiState()
           /* удаляем expired token */
-          localStorage.removeItem('accessToken')
+          sessionStorage.removeItem('accessToken')
           /* убеждаемся, что код выполняется в браузере, а не на сервере */
           if (typeof window !== 'undefined') {
             /* перенаправляем пользователя на страницу логина */

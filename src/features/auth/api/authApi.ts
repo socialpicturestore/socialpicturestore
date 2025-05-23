@@ -103,7 +103,7 @@ export const authApi = baseApi.injectEndpoints({
     }),
     updateTokens: build.mutation<NewToken, void>({
       query: () => ({
-        url: `auth/google/login`,
+        url: `auth/update-tokens`,
         method: 'POST',
       }),
     }),

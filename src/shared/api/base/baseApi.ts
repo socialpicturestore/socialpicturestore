@@ -13,7 +13,7 @@ const baseQueryWithAccessToken = fetchBaseQuery({
     const token = sessionStorage.getItem('access-token')
 
     if (token) {
-      headers.set('authorization', `Bearer ${token}`)
+      headers.set('Authorization', `Bearer ${token}`)
     }
 
     return headers
@@ -42,8 +42,8 @@ export const baseQueryWithReauth: BaseQueryFn<
         /* пытаемся получить новый токен по refresh token */
         const refreshResult = await baseQueryWithAccessToken(
           {
-            method: 'POST',
             url: 'auth/update-tokens',
+            method: 'POST',
           },
           api,
           extraOptions

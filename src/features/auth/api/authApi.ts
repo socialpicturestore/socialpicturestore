@@ -20,14 +20,14 @@ export const authApi = baseApi.injectEndpoints({
   endpoints: build => ({
     checkRecoveryCode: build.mutation<EmailResponse, CheckRecoveryCodeArgs>({
       query: args => ({
-        url: `auth/logout`,
+        url: `auth/check-recovery-code`,
         method: 'POST',
         body: args,
       }),
     }),
     login: build.mutation<LoginResponse, LoginArgs>({
       query: args => ({
-        url: `auth/logout`,
+        url: `auth/login`,
         method: 'POST',
         body: args,
       }),

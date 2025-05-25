@@ -3,15 +3,9 @@
 *,
 *::before,
 *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
 }
 
 input,
@@ -29,8 +23,8 @@ option {
 
 button {
   padding: 0;
-  background-color: transparent;
   border: none;
+  background-color: transparent;
 }
 
 a {

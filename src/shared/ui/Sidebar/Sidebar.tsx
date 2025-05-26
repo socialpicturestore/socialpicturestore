@@ -1,22 +1,30 @@
 import styles from './Sidebar.module.scss'
+import type { ReactNode } from 'react'
 
 interface SidebarItem {
   id: string
   label: string
-  icon: React.ReactNode
-  activeIcon?: React.ReactNode // Optional active icon
+  icon: ReactNode
+  activeIcon?: ReactNode // Optional active icon
   disabled?: boolean
   href: string
 }
 
 interface SidebarProps {
   items: SidebarItem[]
-  logout: SidebarItem
   activeItemId: string | null
   onItemClick: (id: string) => void
+  children?: ReactNode
+  className?: string
 }
 
-export const Sidebar = ({ items, logout, activeItemId, onItemClick }: SidebarProps) => {
+export const Sidebar = ({
+  items,
+  children,
+  activeItemId,
+  onItemClick,
+  className,
+}: SidebarProps) => {
   return (
     <div className={styles.sidebarWrapper}>
       <nav className={styles.sidebarMenu}>
@@ -37,22 +45,11 @@ export const Sidebar = ({ items, logout, activeItemId, onItemClick }: SidebarPro
           )
         })}
       </nav>
-      <footer className={styles.footer}>
-        <a
-          key={logout.id}
-          className={`${styles.sidebarItem} 
-                  ${activeItemId === logout.id ? styles.activeItem : ''}
-                  ${logout.disabled ? styles.disableItem : ''}`}
-          onClick={() => !logout.disabled && onItemClick(logout.id)}
-        >
-          {activeItemId === logout.id && logout.activeIcon ? (
-            <span className={styles.itemIcon}>{logout.activeIcon}</span>
-          ) : (
-            <span className={styles.itemIcon}>{logout.icon}</span>
-          )}
-          <span>{logout.label}</span>
-        </a>
-      </footer>
+      {children && (
+        <div className={className ? `${className} ${styles.footer}` : styles.footer}>
+          {children}
+        </div>
+      )}
     </div>
   )
 }

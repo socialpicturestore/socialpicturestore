@@ -8,13 +8,24 @@ export type ButtonProps = {
   children: ReactNode
   variant?: 'primary' | 'secondary' | 'outline' | 'text' | 'withIcon'
   fullWidth?: boolean
-  withIcon?: boolean
+  isWithIcon?: boolean
+  compact?: boolean
   className?: string
-  icon?: ReactNode
 } & ComponentPropsWithoutRef<'button'>
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = 'primary', fullWidth = false, asChild = false, className, ...rest }, ref) => {
+  (
+    {
+      variant = 'primary',
+      fullWidth = false,
+      isWithIcon = false,
+      asChild = false,
+      compact = false,
+      className,
+      ...rest
+    },
+    ref
+  ) => {
     const Comp = asChild ? Slot : 'button'
 
     return (
@@ -23,8 +34,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={clsx(
           s.button,
           s[variant],
-          s['withIcon'] && s.icon,
+          isWithIcon && s.isWithIcon,
           fullWidth && s.fullWidth,
+          compact && s.compact,
           className
         )}
         {...rest}

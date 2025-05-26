@@ -2,6 +2,7 @@ import { fetchBaseQuery } from '@reduxjs/toolkit/query'
 import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query'
 import { Mutex } from 'async-mutex'
 import { createApi } from '@reduxjs/toolkit/query/react'
+import Router from 'next/router'
 
 /* Мьютекс используется для предотвращения одновременных запросов на обновление токена */
 const mutex = new Mutex()
@@ -30,6 +31,8 @@ export const baseQueryWithReauth: BaseQueryFn<
 
   /* выполняем исходный запрос */
   let result = await baseQueryWithAccessToken(args, api, extraOptions)
+
+  const requestUrl = typeof args === 'string' ? args : args.url
 
   /* проверяем, вернул ли запрос ошибку с кодом 401 (Unauthorized), что указывает на истёкший токен */
   if (result.error && result.error.status === 401) {
@@ -62,10 +65,16 @@ export const baseQueryWithReauth: BaseQueryFn<
           baseApi.util.resetApiState()
           /* удаляем expired token */
           sessionStorage.removeItem('accessToken')
-          /* убеждаемся, что код выполняется в браузере, а не на сервере */
-          if (typeof window !== 'undefined') {
-            /* перенаправляем пользователя на страницу логина */
-            window.location.href = 'auth/login'
+          /* убеждаемся, что код выполняется в браузере, а не на сервере и что мы не находимся на странице логина */
+          if (typeof window !== 'undefined' && window.location.pathname !== '/auth/login') {
+            /* если ошибка связана с запросом на me */
+            if (requestUrl.includes('/auth/me')) {
+              /* полностью перезагружаем страницу */
+              window.location.href = '/auth/login'
+            } else {
+              /* иначе --> перенаправляем пользователя на страницу логина */
+              await Router.push('/auth/login')
+            }
           }
         }
       } finally {

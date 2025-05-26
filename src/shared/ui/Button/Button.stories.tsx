@@ -32,7 +32,6 @@ export const Primary: Story = {
     disabled: false,
     variant: 'primary',
     onClick: fn(),
-    withIcon: false,
   },
 }
 

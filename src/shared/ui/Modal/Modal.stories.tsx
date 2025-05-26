@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
-import Modal from '@/shared/ui/modal/Modal'
+import Modal from '@/shared/ui/Modal/Modal'
 import React, { useState } from 'react'
-import { Button, Input, Typography } from '@/shared/ui'
+import { Button, Typography } from '@/shared/ui'
 
 const meta: Meta = {
   title: 'Components/Modal',
@@ -19,16 +19,16 @@ export const WithCloseButtonModal: Story = {
       <>
         <button onClick={() => setOpen(prev => !prev)}>Открыть диалог</button>
         <Modal open={open} onClose={() => setOpen(false)} modalTitle={'Title'} closeButton={true}>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur
-            delectus ducimus eius placeat! Ab ad aliquam aspernatur deleniti, laboriosam modi nulla
-            repellendus rerum sint sit tenetur voluptatem voluptates voluptatum!
+          <Typography variant={'regularText16'}>
+            Lorem ipsum dolor sit amet, elit. Aspernatur ducimus eius placeat!
           </Typography>
-          <Input placeholder={'Password'} />
-          <Input placeholder={'Email'} />
-
-          <Button>LogIn</Button>
-          <Button>LogOut</Button>
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <Button style={{ width: '96px' }}>
+              <Typography as={'span'} variant={'h3'}>
+                OK
+              </Typography>
+            </Button>
+          </div>
         </Modal>
       </>
     )
@@ -41,17 +41,24 @@ export const WithoutCloseButtonModal: Story = {
     return (
       <>
         <button onClick={() => setOpen(prev => !prev)}>Открыть диалог</button>
-        <Modal open={open} onClose={() => setOpen(false)} modalTitle={'Title'} closeButton={false}>
+        <Modal
+          open={open}
+          onClose={() => setOpen(false)}
+          modalTitle={'Title'}
+          closeButton={false}
+          separator={false}
+        >
           <Typography>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur
             delectus ducimus eius placeat! Ab ad aliquam aspernatur deleniti, laboriosam modi nulla
             repellendus rerum sint sit tenetur voluptatem voluptates voluptatum!
           </Typography>
-          <Input placeholder={'Password'} />
-          <Input placeholder={'Email'} />
-
-          <Button>LogIn</Button>
-          <Button>LogOut</Button>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <Button variant={'outline'} fullWidth>
+              Yes
+            </Button>
+            <Button fullWidth>No</Button>
+          </div>
         </Modal>
       </>
     )

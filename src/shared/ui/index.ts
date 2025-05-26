@@ -13,4 +13,4 @@ export * from './Scroll/Scroll'
 export * from './Sidebar/Sidebar'
 export * from './DatePicker/DatePicker'
 export * from './TextArea/TextArea'
-
+export * from './Loader/Loader'

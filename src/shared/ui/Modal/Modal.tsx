@@ -9,7 +9,7 @@ import clsx from 'classnames'
 
 type Props = {
   open: boolean
-  closeButton: boolean
+  closeButton?: boolean
   onClose: () => void
   modalTitle: string
   separator?: boolean
@@ -18,6 +18,7 @@ type Props = {
   headerClassName?: string
   modalTitleClassName?: string
   overlayClassName?: string
+  separatorClassName?: string
 } & ComponentProps<'div'>
 
 const Modal = ({
@@ -26,12 +27,13 @@ const Modal = ({
   children,
   open,
   closeButton,
-  separator = true,
+  separator = false,
   closeButtonClassName,
   contentClassName,
   overlayClassName,
   headerClassName,
   modalTitleClassName,
+  separatorClassName,
   ...props
 }: Props) => {
   return (
@@ -49,7 +51,7 @@ const Modal = ({
               </Dialog.Close>
             )}
           </div>
-          {separator && <div className={s.separator} />}
+          {separator && <div className={clsx(s.separator, separatorClassName)} />}
           {children}
         </Dialog.Content>
       </Dialog.Portal>

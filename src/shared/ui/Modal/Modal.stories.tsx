@@ -18,7 +18,13 @@ export const WithCloseButtonModal: Story = {
     return (
       <>
         <button onClick={() => setOpen(prev => !prev)}>Открыть диалог</button>
-        <Modal open={open} onClose={() => setOpen(false)} modalTitle={'Title'} closeButton={true}>
+        <Modal
+          open={open}
+          onClose={() => setOpen(false)}
+          modalTitle={'Title'}
+          closeButton
+          separator
+        >
           <Typography variant={'regularText16'}>
             Lorem ipsum dolor sit amet, elit. Aspernatur ducimus eius placeat!
           </Typography>
@@ -41,13 +47,7 @@ export const WithoutCloseButtonModal: Story = {
     return (
       <>
         <button onClick={() => setOpen(prev => !prev)}>Открыть диалог</button>
-        <Modal
-          open={open}
-          onClose={() => setOpen(false)}
-          modalTitle={'Title'}
-          closeButton={false}
-          separator={false}
-        >
+        <Modal open={open} onClose={() => setOpen(false)} modalTitle={'Title'}>
           <Typography>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur
             delectus ducimus eius placeat! Ab ad aliquam aspernatur deleniti, laboriosam modi nulla

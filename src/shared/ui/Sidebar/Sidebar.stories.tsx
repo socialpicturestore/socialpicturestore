@@ -76,6 +76,7 @@ const meta: Meta<typeof Sidebar> = {
         icon: <SearchOutline />,
         activeIcon: <Search />,
         href: '#',
+        separator: true,
       },
       {
         id: 'statistics',
@@ -141,6 +142,7 @@ export const WithDisableIcons: Story = {
         icon: <SearchOutline />,
         activeIcon: <Search />,
         href: '#',
+        separator: true,
       },
       {
         id: 'statistics',

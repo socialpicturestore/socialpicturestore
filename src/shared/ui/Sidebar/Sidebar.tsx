@@ -8,6 +8,7 @@ interface SidebarItem {
   activeIcon?: ReactNode // Optional active icon
   disabled?: boolean
   href: string
+  separator?: boolean
 }
 
 interface SidebarProps extends ComponentProps<'aside'> {
@@ -37,7 +38,8 @@ export const Sidebar = ({
               key={item.id}
               className={`${styles.sidebarItem} 
                   ${activeItemId === item.id ? styles.activeItem : ''}
-                  ${item.disabled ? styles.disableItem : ''}`}
+                  ${item.disabled ? styles.disableItem : ''}
+              ${item.separator && styles.separator}`}
               onClick={() => !item.disabled && onItemClick(item.id)}
             >
               {iconToShow && <span className={styles.itemIcon}>{iconToShow}</span>}

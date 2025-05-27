@@ -50,11 +50,16 @@
 
   &.disableItem {
     color: $color-dark-100;
+    pointer-events: none;
   }
 
   &.activeItem {
     color: $color-accent-500;
     font-weight: $font-weight-bold;
+  }
+
+  &.separator {
+    margin-bottom: 36px;
   }
 }
 

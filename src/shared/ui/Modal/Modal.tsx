@@ -1,6 +1,6 @@
 'use client'
 
-import React, { type ComponentProps, type ReactNode } from 'react'
+import React, { type ComponentProps } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import s from './Modal.module.scss'
 import { Close } from '@/shared/assets/icons'
@@ -11,7 +11,6 @@ type Props = {
   open: boolean
   closeButton: boolean
   onClose: () => void
-  children: ReactNode
   modalTitle: string
   separator?: boolean
   closeButtonClassName?: string

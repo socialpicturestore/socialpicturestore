@@ -1,11 +1,10 @@
-import { ComponentPropsWithoutRef, forwardRef, ReactNode } from 'react'
+import { ComponentPropsWithoutRef, forwardRef } from 'react'
 import clsx from 'classnames'
 import s from './Button.module.scss'
 import { Slot } from '@radix-ui/react-slot'
 
 export type ButtonProps = {
   asChild?: boolean
-  children: ReactNode
   variant?: 'primary' | 'secondary' | 'outline' | 'text' | 'withIcon'
   fullWidth?: boolean
   isWithIcon?: boolean

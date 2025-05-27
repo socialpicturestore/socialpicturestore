@@ -1,5 +1,5 @@
 import styles from './Sidebar.module.scss'
-import type { ReactNode } from 'react'
+import type { ComponentProps, ReactNode } from 'react'
 
 interface SidebarItem {
   id: string
@@ -10,7 +10,7 @@ interface SidebarItem {
   href: string
 }
 
-interface SidebarProps {
+interface SidebarProps extends ComponentProps<'aside'> {
   items: SidebarItem[]
   activeItemId: string | null
   onItemClick: (id: string) => void
@@ -24,9 +24,10 @@ export const Sidebar = ({
   activeItemId,
   onItemClick,
   className,
+  ...props
 }: SidebarProps) => {
   return (
-    <div className={styles.sidebarWrapper}>
+    <aside className={styles.sidebarWrapper} {...props}>
       <nav className={styles.sidebarMenu}>
         {items.map(item => {
           const iconToShow =
@@ -50,6 +51,6 @@ export const Sidebar = ({
           {children}
         </div>
       )}
-    </div>
+    </aside>
   )
 }

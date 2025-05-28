@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import styles from './Card.module.scss'
+import clsx from 'classnames'
 
 export interface CardProps {
   title?: ReactNode
@@ -8,10 +9,10 @@ export interface CardProps {
   className?: string
 }
 
-export const Card: React.FC<CardProps> = ({ title, children, footer }) => {
+export const Card: React.FC<CardProps> = ({ title, children, footer, className }) => {
   return (
     <div className={styles.cardWrapper}>
-      <div className={styles.cardField}>
+      <div className={clsx(styles.cardField, className)}>
         {title && <div className={styles.cardHeader}>{title}</div>}
         <div className={styles.cardContent}>{children}</div>
         {footer && <div className={styles.cardFooter}>{footer}</div>}

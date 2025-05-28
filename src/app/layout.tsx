@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.scss'
 import { Header } from '@/widgets/header'
-import StoreProvider from '@/app/prividers/StoreProvider'
+import StoreProvider from '@/app/providers/StoreProvider'
 
 const interSans = Inter({
   variable: '--font-inter',

@@ -1,24 +1,34 @@
 import styles from './Sidebar.module.scss'
+import type { ComponentProps, ReactNode } from 'react'
 
 interface SidebarItem {
   id: string
   label: string
-  icon: React.ReactNode
-  activeIcon?: React.ReactNode // Optional active icon
+  icon: ReactNode
+  activeIcon?: ReactNode // Optional active icon
   disabled?: boolean
   href: string
+  separator?: boolean
 }
 
-interface SidebarProps {
+interface SidebarProps extends ComponentProps<'aside'> {
   items: SidebarItem[]
-  logout: SidebarItem
   activeItemId: string | null
   onItemClick: (id: string) => void
+  children?: ReactNode
+  className?: string
 }
 
-export const Sidebar = ({ items, logout, activeItemId, onItemClick }: SidebarProps) => {
+export const Sidebar = ({
+  items,
+  children,
+  activeItemId,
+  onItemClick,
+  className,
+  ...props
+}: SidebarProps) => {
   return (
-    <div className={styles.sidebarWrapper}>
+    <aside className={styles.sidebarWrapper} {...props}>
       <nav className={styles.sidebarMenu}>
         {items.map(item => {
           const iconToShow =
@@ -28,7 +38,8 @@ export const Sidebar = ({ items, logout, activeItemId, onItemClick }: SidebarPro
               key={item.id}
               className={`${styles.sidebarItem} 
                   ${activeItemId === item.id ? styles.activeItem : ''}
-                  ${item.disabled ? styles.disableItem : ''}`}
+                  ${item.disabled ? styles.disableItem : ''}
+              ${item.separator && styles.separator}`}
               onClick={() => !item.disabled && onItemClick(item.id)}
             >
               {iconToShow && <span className={styles.itemIcon}>{iconToShow}</span>}
@@ -37,22 +48,11 @@ export const Sidebar = ({ items, logout, activeItemId, onItemClick }: SidebarPro
           )
         })}
       </nav>
-      <footer className={styles.footer}>
-        <a
-          key={logout.id}
-          className={`${styles.sidebarItem} 
-                  ${activeItemId === logout.id ? styles.activeItem : ''}
-                  ${logout.disabled ? styles.disableItem : ''}`}
-          onClick={() => !logout.disabled && onItemClick(logout.id)}
-        >
-          {activeItemId === logout.id && logout.activeIcon ? (
-            <span className={styles.itemIcon}>{logout.activeIcon}</span>
-          ) : (
-            <span className={styles.itemIcon}>{logout.icon}</span>
-          )}
-          <span>{logout.label}</span>
-        </a>
-      </footer>
-    </div>
+      {children && (
+        <div className={className ? `${className} ${styles.footer}` : styles.footer}>
+          {children}
+        </div>
+      )}
+    </aside>
   )
 }

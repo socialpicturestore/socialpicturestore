@@ -3,7 +3,6 @@
 .sidebarWrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   max-width: 220px;
   min-height: 100vh;
   max-height: 660px;
@@ -19,14 +18,13 @@
 }
 
 .footer {
-  padding-bottom: 36px;
-  list-style-type: none;
-  color: $color-light-100;
-  font-family: $font-family-primary;
-  font-size: $font-size-s;
-  font-weight: $font-weight-medium;
-  line-height: $line-height-m;
-  padding-left: 60px;
+  margin-top: 180px;
+  align-self: flex-start;
+  margin-left: 60px;
+
+  & > button {
+    padding: 0;
+  }
 }
 
 .sidebarItem {
@@ -52,11 +50,16 @@
 
   &.disableItem {
     color: $color-dark-100;
+    pointer-events: none;
   }
 
   &.activeItem {
     color: $color-accent-500;
     font-weight: $font-weight-bold;
+  }
+
+  &.separator {
+    margin-bottom: 36px;
   }
 }
 

@@ -1,6 +1,5 @@
-// Sidebar.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react'
-import { Sidebar } from '@/shared/ui'
+import { Button, Sidebar, Typography } from '@/shared/ui'
 import React from 'react'
 import {
   Home,
@@ -18,7 +17,6 @@ import {
   Bookmark,
   BookmarkOutline,
   LogOut,
-  LogOutOutline,
 } from '@/shared/assets/icons'
 
 const meta: Meta<typeof Sidebar> = {
@@ -78,6 +76,7 @@ const meta: Meta<typeof Sidebar> = {
         icon: <SearchOutline />,
         activeIcon: <Search />,
         href: '#',
+        separator: true,
       },
       {
         id: 'statistics',
@@ -94,13 +93,6 @@ const meta: Meta<typeof Sidebar> = {
         href: '#',
       },
     ],
-    logout: {
-      id: 'logout',
-      label: 'LogOut',
-      icon: <LogOutOutline />,
-      activeIcon: <LogOut />,
-      href: '#',
-    },
     activeItemId: null,
     onItemClick: id => console.log('Item clicked:', id),
   },
@@ -150,6 +142,7 @@ export const WithDisableIcons: Story = {
         icon: <SearchOutline />,
         activeIcon: <Search />,
         href: '#',
+        separator: true,
       },
       {
         id: 'statistics',
@@ -166,13 +159,6 @@ export const WithDisableIcons: Story = {
         href: '#',
       },
     ],
-    logout: {
-      id: 'logout',
-      label: 'LogOut',
-      icon: <LogOutOutline />,
-      activeIcon: <LogOut />,
-      href: '#',
-    },
   },
   parameters: {
     pseudo: { hover: false },
@@ -191,7 +177,14 @@ export const InteractiveExample: Story = {
           setActiveId(id)
           args.onItemClick?.(id)
         }}
-      />
+      >
+        <Button variant={'withIcon'}>
+          <LogOut />
+          <Typography variant={'mediumText14'} style={{ color: 'inherit' }}>
+            Log Out
+          </Typography>
+        </Button>
+      </Sidebar>
     )
   },
 }

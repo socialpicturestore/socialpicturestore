@@ -1,3 +1,5 @@
+'use client'
+
 import { type ComponentPropsWithoutRef, type ComponentRef, forwardRef, ReactNode } from 'react'
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import * as LabelRadix from '@radix-ui/react-label'

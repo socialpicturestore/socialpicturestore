@@ -1,17 +1,14 @@
-@use '../../styles/variables/colors' as colors;
-@use '../../styles/variables/typography' as typo;
+@use '../../styles/index.scss' as *;
 
 .textAreaWrapper {
   display: flex;
   flex-direction: column;
   gap: 4px;
-
-  
 }
 
 .textAreaTitle {
-    color: colors.$color-light-900;
-  }
+  color: $color-light-900;
+}
 
 .textAreaInnerWrapper {
   position: relative;
@@ -19,55 +16,54 @@
   align-items: center;
 
   &:focus-within {
-    color: colors.$color-light-100;
+    color: $color-light-100;
   }
 
   &:active {
-    color: colors.$color-light-100;
+    color: $color-light-100;
   }
 }
 
 .textAreaField {
   width: 100%;
   background: transparent;
-  border: 1px solid colors.$color-dark-100;
+  border: 1px solid $color-dark-100;
   border-radius: 6px;
   padding: 8px 12px;
   transition: border-color 0.2s;
   resize: none;
 
-
   &::placeholder {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    color: colors.$color-light-900;
+    font-size: $font-size-m;
+    font-weight: $font-weight-regular;
+    line-height: $line-height-m;
+    color: $color-light-900;
   }
 
   &:hover {
-    border-color: colors.$color-light-900;
+    border-color: $color-light-900;
   }
 
   &:focus {
-    border-color: colors.$color-accent-500;
+    border-color: $color-accent-500;
     outline: none;
   }
 
   &:active {
-    border-color: colors.$color-light-100;
+    border-color: $color-light-100;
   }
 
   &.textAreaError {
-    border-color: colors.$color-danger-500;
+    border-color: $color-danger-500;
 
     &:focus {
-      border-color: colors.$color-danger-500;
+      border-color: $color-danger-500;
     }
   }
 
   &.textAreaDisabled {
-    color: colors.$color-dark-100;
-    border-color: colors.$color-dark-100;
+    color: $color-dark-100;
+    border-color: $color-dark-100;
     cursor: not-allowed;
     opacity: 0.5;
   }
@@ -75,5 +71,5 @@
 
 .textAreaErrorMessage {
   margin-top: 0;
-  color: colors.$color-danger-500;
+  color: $color-danger-500;
 }

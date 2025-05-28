@@ -36,7 +36,7 @@ export const FirstPage: Story = {
   },
 }
 
-// Seven page story with explicit props
+// story with explicit props
 export const SevenPage: Story = {
   args: {
     currentPage: 7,

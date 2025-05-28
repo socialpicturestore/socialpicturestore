@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react'
 import * as Select from '@radix-ui/react-select'
 import styles from './selectBox.module.scss'
@@ -20,11 +21,10 @@ type SelectProps = {
   label?: string
   className?: string
   isMobile?: boolean
-  variant: 'desktop' | 'mobileLang' | 'pagination'
+  variant?: 'desktop' | 'mobileLang' | 'pagination'
 }
 
 const SelectBox = forwardRef<HTMLButtonElement, SelectProps>(
-
   ({ options, value, disabled, onChange, label, className, variant, isMobile }, ref) => {
     const SELECT_CONTENT_VISIBLE_HEIGHT = 109
     const localTriggerRef = useRef<HTMLButtonElement>(null)
@@ -54,7 +54,10 @@ const SelectBox = forwardRef<HTMLButtonElement, SelectProps>(
           onOpenChange={handleOpenChange}
           disabled={disabled}
         >
-          <Select.Trigger ref={localTriggerRef} className={clsx(styles[variant], styles.trigger)}>
+          <Select.Trigger
+            ref={localTriggerRef}
+            className={clsx(variant && styles[variant], styles.trigger)}
+          >
             <div className={styles.triggerValue}>
               {selectedOption?.icon && <span className={styles.icon}>{selectedOption.icon}</span>}
               {variant !== 'mobileLang' ? (
@@ -71,7 +74,7 @@ const SelectBox = forwardRef<HTMLButtonElement, SelectProps>(
                 width: variant !== 'mobileLang' ? contentWidth : 'inherit',
                 maxHeight: SELECT_CONTENT_VISIBLE_HEIGHT,
               }}
-              className={clsx(styles.content, styles[variant])}
+              className={clsx(styles.content, variant && styles[variant])}
               position="popper"
               sideOffset={-1}
             >

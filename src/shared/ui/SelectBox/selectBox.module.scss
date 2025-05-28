@@ -1,6 +1,4 @@
-@use '../../styles/variables/typography' as *;
-@use '../../styles/variables/colors' as *;
-
+@use '../../styles/index.scss' as *;
 
 .testDesktopWidth {
   width: 240px;
@@ -68,7 +66,7 @@
 
 .triggerValue {
   display: flex;
-  gap: 12px
+  gap: 12px;
 }
 
 .icon {
@@ -106,7 +104,6 @@
   &[data-state='open'] {
     border-color: $color-light-100;
   }
-
 }
 
 .item {
@@ -131,7 +128,6 @@
     background-color: $color-dark-300;
     outline: none;
   }
-
 }
 
 .inputLabel {

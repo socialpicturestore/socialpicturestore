@@ -1,5 +1,4 @@
-@use '../../styles/variables/typography' as *;
-@use '../../styles/variables/colors' as *;
+@use '../../styles/index.scss' as *;
 
 @mixin text-common-styles($font-size, $font-weight, $line-height) {
   font-family: $font-family-primary;
@@ -69,4 +68,8 @@
 
 .smallLink {
   @include link-common-styles($font-size-xs, $line-height-s);
+}
+
+.small {
+  @include text-common-styles($font-size-xxs, $font-weight-medium, $line-height-xs);
 }

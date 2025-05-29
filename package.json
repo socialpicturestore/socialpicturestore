@@ -15,6 +15,7 @@
     "test": "echo \"No tests available\" && exit 0"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
     "@radix-ui/react-checkbox": "^1.2.3",
     "@radix-ui/react-dialog": "^1.1.13",
     "@radix-ui/react-label": "^2.1.4",
@@ -23,6 +24,7 @@
     "@radix-ui/react-select": "^2.2.2",
     "@radix-ui/react-slot": "^1.2.0",
     "@reduxjs/toolkit": "^2.8.2",
+    "@types/react-google-recaptcha": "^2.1.9",
     "async-mutex": "^0.5.0",
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
@@ -30,10 +32,12 @@
     "react": "^19.0.0",
     "react-day-picker": "^9.6.7",
     "react-dom": "^19.0.0",
+    "react-google-recaptcha": "^3.1.0",
     "react-hook-form": "^7.56.4",
     "react-redux": "^9.2.0",
     "sass": "^1.87.0",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "zod": "^3.25.36"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",

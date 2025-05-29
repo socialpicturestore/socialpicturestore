@@ -1,28 +1,80 @@
+'use client'
+
 import React from 'react'
-import { Button, Card, Input, Recaptcha, Typography } from '@/shared/ui'
+import { Button, Card, Input, RecaptchaV2, Typography } from '@/shared/ui'
 import s from './ForgotPassword.module.scss'
 import Link from 'next/link'
+import { useForm } from 'react-hook-form'
+import { forgotPasswordSchema } from '@/shared/lib/validation/schemas'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { usePasswordRecoveryMutation } from '@/features/auth'
+
+type FormData = z.infer<typeof forgotPasswordSchema>
 
 export const ForgotPassword = () => {
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+    reset,
+  } = useForm<FormData>({
+    resolver: zodResolver(forgotPasswordSchema),
+  })
+
+  const [triggerRecovery, { isSuccess }] = usePasswordRecoveryMutation()
+
+  const onSubmit = async (data: FormData) => {
+    try {
+      await triggerRecovery({
+        email: data.email,
+        recaptcha: data.recaptcha,
+        baseUrl: process.env.NEXT_PUBLIC_API_URL || '',
+      }).unwrap()
+      reset()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <Card>
-      <div className={s.container}>
-        <Typography variant={'h1'}>Forgot Passord</Typography>
+      <form className={s.container} onSubmit={handleSubmit(onSubmit)}>
+        <Typography variant={'h1'}>Forgot Password</Typography>
 
-        <Input label={'Email'}></Input>
+        <Input
+          {...register('email')}
+          error={errors.email?.message}
+          label={'Email'}
+          placeholder={'example@example.com'}
+        ></Input>
 
         <Typography className={s.paragraph} variant={'regularText14'}>
           Enter your email address and we will send you further instructions{' '}
         </Typography>
 
-        <Button>Send Link</Button>
+        {isSuccess && (
+          <Typography className={s.paragraph} variant={'regularText14'}>
+            The link has been sent by email. If you don’t receive an email send link again
+          </Typography>
+        )}
+
+        <Button type="submit">Send Link</Button>
 
         <Button asChild variant={'text'}>
           <Link href={'/'}>Back to Sign In</Link>
         </Button>
 
-        <Recaptcha state={'default'} onChange={() => console.log()}></Recaptcha>
-      </div>
+        <div className={s.recaptcha}>
+          <RecaptchaV2 onChange={token => setValue('recaptcha', token || '')} />
+          {errors.recaptcha && (
+            <Typography variant={'small'} as={'span'}>
+              {errors.recaptcha.message}
+            </Typography>
+          )}
+        </div>
+      </form>
     </Card>
   )
 }

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Button, Sidebar, Typography } from '@/shared/ui'
+import { Button, Sidebar, SidebarItem, type SidebarItemType, Typography } from '@/shared/ui'
 import React, { useState } from 'react'
 import {
   Home,
@@ -19,7 +19,6 @@ import {
   LogOut,
 } from '@/shared/assets/icons'
 import s from './Sidebar.module.scss'
-import { SidebarItem, SidebarItemType } from '@/shared/ui/Sidebar/SidebarItem'
 import Link from 'next/link'
 
 const meta: Meta<typeof Sidebar> = {

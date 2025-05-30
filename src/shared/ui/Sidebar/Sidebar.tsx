@@ -10,13 +10,7 @@ type SidebarProps = {
 const Sidebar = forwardRef<HTMLElement, SidebarProps>(
   ({ width = '220px', children, className, ...props }, ref) => {
     return (
-      <aside
-        ref={ref}
-        className={s.sidebar}
-        style={{ width }}
-        aria-label="Основное меню"
-        {...props}
-      >
+      <aside ref={ref} className={s.sidebar} style={{ width }} aria-label="Main menu" {...props}>
         {children}
       </aside>
     )

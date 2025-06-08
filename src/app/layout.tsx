@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.scss'
-import { Header } from '@/widgets/header'
 import StoreProvider from '@/app/providers/StoreProvider'
 
 const interSans = Inter({
@@ -22,10 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${interSans.variable} antialiased`}>
-        <StoreProvider>
-          <Header />
-          {children}
-        </StoreProvider>
+        <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
   )

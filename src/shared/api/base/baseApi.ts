@@ -2,6 +2,7 @@ import { fetchBaseQuery } from '@reduxjs/toolkit/query'
 import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query'
 import { Mutex } from 'async-mutex'
 import { createApi } from '@reduxjs/toolkit/query/react'
+import { PATHS } from '@/shared/const/path/paths'
 
 /* Мьютекс используется для предотвращения одновременных запросов на обновление токена */
 const mutex = new Mutex()
@@ -63,9 +64,9 @@ export const baseQueryWithReauth: BaseQueryFn<
           /* удаляем expired token */
           sessionStorage.removeItem('accessToken')
           /* убеждаемся, что код выполняется в браузере, а не на сервере и что мы не находимся на странице логина */
-          if (typeof window !== 'undefined' && window.location.pathname !== '/auth/login') {
+          if (typeof window !== 'undefined' && window.location.pathname !== PATHS.AUTH.LOGIN) {
             /* полностью перезагружаем страницу */
-            window.location.href = '/auth/login'
+            window.location.href = PATHS.AUTH.LOGIN
           }
         }
       } finally {

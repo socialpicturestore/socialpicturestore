@@ -1,6 +1,6 @@
 import { Header } from '@/widgets/header'
 
-export default function AuthLayout({
+export default function PublicLayout({
   children,
 }: Readonly<{
   children: React.ReactNode

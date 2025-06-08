@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Card, Input, RecaptchaV2, Typography } from '@/shared/ui'
 import s from './ForgotPassword.module.scss'
 import Link from 'next/link'
@@ -8,40 +8,36 @@ import { useForm } from 'react-hook-form'
 
 import { usePasswordRecoveryMutation } from '@/features/auth'
 import Modal from '@/shared/ui/Modal/Modal'
-
-type MessagesType = {
-  field: string
-  message: string
-}
-
-type DataError = {
-  error: string
-  statusCode: number
-  messages: MessagesType[]
-}
-
-type ErrorMessage = {
-  data: DataError
-  status: number
-}
+import {
+  ErrorMessage,
+  ForgotPasswordFormData,
+} from '@/widgets/(password-recovery)/types/recovery.types'
+import { useSearchParams } from 'next/navigation'
 
 export const ForgotPassword = () => {
+  const searchParams = useSearchParams()
+  const redirect = searchParams.get('redirect-from-link-expired')
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
-  const { register, handleSubmit, setValue, reset } = useForm()
+  const { register, handleSubmit, setValue, reset } = useForm<ForgotPasswordFormData>()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const [triggerRecovery, { isSuccess }] = usePasswordRecoveryMutation()
+
+  useEffect(() => {
+    if (redirect) {
+      setIsModalOpen(true)
+    }
+  }, [])
 
   const onSubmit = async (data: any) => {
     try {
       await triggerRecovery({
         email: data.email,
         recaptcha: data.recaptcha,
-        baseUrl: process.env.NEXT_PUBLIC_API_URL || '',
+        baseUrl: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/',
       }).unwrap()
       setErrorMessage(null)
       reset()
-      setIsModalOpen(true)
     } catch (error) {
       setErrorMessage((error as ErrorMessage).data.messages[0].message)
     }
@@ -97,10 +93,10 @@ export const ForgotPassword = () => {
         </Button>
 
         <Button asChild variant={'text'} className={s.backButton}>
-          <Link href={'/'}>Back to Sign In</Link>
+          <Link href={'/sign-in'}>Back to Sign In</Link>
         </Button>
 
-        {!isSuccess && (
+        {!isSuccess && !redirect && (
           <div className={s.recaptcha}>
             <RecaptchaV2 onChange={handleCaptchaVerified} />
           </div>

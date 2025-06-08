@@ -1,0 +1,29 @@
+@use '../../../shared/styles/index' as *;
+
+.sectionWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  gap: 31px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 19px;
+  width: 294px;
+}
+
+.paragraph {
+  text-align: center;
+}
+
+.resendButton {
+  width: 100%;
+}

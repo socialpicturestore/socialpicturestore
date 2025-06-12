@@ -34,7 +34,7 @@ export const ForgotPassword = () => {
       await triggerRecovery({
         email: data.email,
         recaptcha: data.recaptcha,
-        baseUrl: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/',
+        baseUrl: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/'}auth/password-recovery`,
       }).unwrap()
       setErrorMessage(null)
       reset()

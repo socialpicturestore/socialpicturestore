@@ -19,7 +19,7 @@ export const LinkExpired = () => {
         baseUrl: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/'}auth/password-recovery`,
         email: email || '',
       }).unwrap()
-      router.push('/auth/forgot-password?redirect-from-link-expired=true')
+      router.push(`/auth/forgot-password?redirect-from-link-expired=true&email=${email}`)
     } catch (e) {
       console.log(e)
     }

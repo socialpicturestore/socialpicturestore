@@ -16,7 +16,7 @@ export const LinkExpired = () => {
   const onSubmit = async () => {
     try {
       await passwordResend({
-        baseUrl: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/',
+        baseUrl: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/'}auth/password-recovery`,
         email: email || '',
       }).unwrap()
       router.push('/auth/forgot-password?redirect-from-link-expired=true')

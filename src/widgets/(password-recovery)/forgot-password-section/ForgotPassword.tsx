@@ -17,6 +17,7 @@ import { useSearchParams } from 'next/navigation'
 export const ForgotPassword = () => {
   const searchParams = useSearchParams()
   const redirect = searchParams.get('redirect-from-link-expired')
+  const email = searchParams.get('email')
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const { register, handleSubmit, setValue, reset } = useForm<ForgotPasswordFormData>()
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -57,7 +58,7 @@ export const ForgotPassword = () => {
         separator={true}
       >
         <Typography variant={'regularText16'}>
-          We have sent a link to confirm your email to epam@epam.com
+          We have sent a link to confirm your email to {email}
         </Typography>
 
         <div className={s.buttonContainer}>

@@ -3,7 +3,7 @@ import { ComponentProps, ReactNode } from 'react'
 import clsx from 'classnames'
 import s from './Alerts.module.scss'
 import Close from '@/shared/assets/icons/Close'
-import { Typography } from '../Typography/Typography'
+import { Typography } from '@/shared/ui'
 
 export type AlertProps = {
   variant?: 'success' | 'error'
@@ -27,14 +27,14 @@ const Alert = ({
       className={clsx(s.alert, s[variant], className)}
       {...props}
     >
-      <AlertPrimitive.Close className={s.closeButton}>
+      <AlertPrimitive.Close asChild className={s.closeButton}>
         <Close />
       </AlertPrimitive.Close>
 
       <div className={s.content}>
         {title && (
           <AlertPrimitive.Title asChild>
-            <Typography variant="boldText16" className={s.title}>
+            <Typography variant="regularText16" className={s.title}>
               {title}
             </Typography>
           </AlertPrimitive.Title>

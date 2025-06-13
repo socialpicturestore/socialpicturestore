@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Alert } from './Alerts'
 import { useState } from 'react'
 import * as ToastPrimitive from '@radix-ui/react-toast'
-import { Button } from '../Button/Button'
+import { Button, Typography } from '@/shared/ui'
 
 // Создаем декоратор для оборачивания всех сторисов в ToastProvider
 const withToastProvider = (Story: any) => (
@@ -33,7 +33,14 @@ export const Success: Story = {
 export const Error: Story = {
   args: {
     variant: 'error',
-    title: 'Error! Server is not available',
+    title: (
+      <>
+        <Typography as={'span'} variant={'boldText16'}>
+          Error!
+        </Typography>{' '}
+        Server is not available
+      </>
+    ),
     open: true,
   },
 }

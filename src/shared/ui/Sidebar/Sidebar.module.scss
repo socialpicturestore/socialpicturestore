@@ -1,66 +1,92 @@
 @use '../../styles/index.scss' as *;
 
-.sidebarWrapper {
+.sidebar {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  max-width: 220px;
-  min-height: 100vh;
-  max-height: 660px;
-  border-right: 1px solid $color-dark-100;
+  padding: 72px 0 110px 0;
+  position: static;
+  overflow: hidden;
+  height: 100vh;
+  border-right: 1px solid $color-dark-300;
 }
 
-.sidebarMenu {
-  display: flex;
-  flex-direction: column;
-  padding-left: 60px;
-  gap: 24px;
-  padding-top: 72px;
+.listItem {
+  display: contents;
 }
 
-.footer {
-  padding-bottom: 36px;
-  list-style-type: none;
-  color: $color-light-100;
-  font-family: $font-family-primary;
-  font-size: $font-size-s;
-  font-weight: $font-weight-medium;
-  line-height: $line-height-m;
-  padding-left: 60px;
-}
-
-.sidebarItem {
-  display: flex;
+.link {
   align-items: center;
+  cursor: pointer;
+  display: flex;
+  width: max-content;
   gap: 12px;
-  color: $color-light-100;
-  font-family: $font-family-primary;
-  font-size: $font-size-s;
-  font-weight: $font-weight-medium;
-  line-height: $line-height-m;
   text-decoration: none;
+  padding: 0;
+  margin: 0;
 
-  &:hover {
-    color: $color-accent-100;
-    cursor: pointer;
+  color: $color-light-100;
+
+  box-shadow: 0 0 0 0 $color-accent-700;
+
+  transition:
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &.active {
+    color: $color-accent-700;
+
+    &:visited {
+      color: $color-accent-700;
+    }
+    &:hover {
+      color: $color-accent-500;
+    }
   }
 
-  &:focus {
-    border: 2px solid $color-accent-700;
-    border-radius: 2px;
+  &:visited {
+    color: $color-light-100;
   }
 
-  &.disableItem {
+  &.disabled {
+    pointer-events: none;
     color: $color-dark-100;
   }
 
-  &.activeItem {
-    color: $color-accent-500;
-    font-weight: $font-weight-bold;
+  &.separator {
+    margin-bottom: 36px;
+  }
+
+  &:hover {
+    color: $color-accent-100;
+  }
+
+  &:focus-visible {
+    border-radius: 2px;
+    outline: none;
+    box-shadow: 0 0 0 2px $color-accent-700;
   }
 }
 
-.itemIcon {
+.text {
+  text-transform: capitalize;
+  padding-right: 7px;
+}
+
+.sidebarNav {
+  padding: 0 30px 0 60px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+}
+
+.icon {
   display: inline-flex;
   align-items: center;
 }

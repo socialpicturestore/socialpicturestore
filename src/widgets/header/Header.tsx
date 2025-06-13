@@ -28,7 +28,7 @@ export const Header = ({ is_auth = false }: { is_auth?: boolean }) => {
           {!is_auth && (
             <div className={s.buttonsContainer}>
               <Button variant="text">Log in</Button>
-              <Button>Sign up</Button>
+              <Button compact>Sign up</Button>
             </div>
           )}
         </div>

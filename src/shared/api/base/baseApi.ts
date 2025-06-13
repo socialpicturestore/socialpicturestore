@@ -62,10 +62,10 @@ export const baseQueryWithReauth: BaseQueryFn<
           baseApi.util.resetApiState()
           /* удаляем expired token */
           sessionStorage.removeItem('accessToken')
-          /* убеждаемся, что код выполняется в браузере, а не на сервере */
-          if (typeof window !== 'undefined') {
-            /* перенаправляем пользователя на страницу логина */
-            window.location.href = 'auth/login'
+          /* убеждаемся, что код выполняется в браузере, а не на сервере и что мы не находимся на странице логина */
+          if (typeof window !== 'undefined' && window.location.pathname !== '/auth/login') {
+            /* полностью перезагружаем страницу */
+            window.location.href = '/auth/login'
           }
         }
       } finally {

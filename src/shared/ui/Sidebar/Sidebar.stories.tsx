@@ -1,7 +1,6 @@
-// Sidebar.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react'
-import { Sidebar } from '@/shared/ui'
-import React from 'react'
+import { Button, Sidebar, SidebarItem, type SidebarItemType, Typography } from '@/shared/ui'
+import React, { useState } from 'react'
 import {
   Home,
   HomeOutline,
@@ -18,180 +17,132 @@ import {
   Bookmark,
   BookmarkOutline,
   LogOut,
-  LogOutOutline,
 } from '@/shared/assets/icons'
+import s from './Sidebar.module.scss'
+import Link from 'next/link'
 
 const meta: Meta<typeof Sidebar> = {
   title: 'Components/Sidebar',
   component: Sidebar,
   tags: ['autodocs'],
-  argTypes: {
-    activeItemId: {
-      control: 'select',
-      options: [
-        'home',
-        'create',
-        'profile',
-        'message',
-        'search',
-        'statistics',
-        'favorites',
-        'logout',
-        null,
-      ],
-      description: 'Currently active item ID',
-    },
-  },
-  args: {
-    items: [
-      {
-        id: 'home',
-        label: 'Home',
-        icon: <HomeOutline />,
-        activeIcon: <Home />,
-        href: '#',
-      },
-      {
-        id: 'create',
-        label: 'Create',
-        icon: <PlusSquareOutline />,
-        activeIcon: <PlusSquare />,
-        href: '#',
-      },
-      {
-        id: 'profile',
-        label: 'My Profile',
-        icon: <PersonOutline />,
-        activeIcon: <Person />,
-        href: '#',
-      },
-      {
-        id: 'message',
-        label: 'Messages',
-        icon: <MessageCircleOutline />,
-        activeIcon: <MessageCircle />,
-        href: '#',
-      },
-      {
-        id: 'search',
-        label: 'Search',
-        icon: <SearchOutline />,
-        activeIcon: <Search />,
-        href: '#',
-      },
-      {
-        id: 'statistics',
-        label: 'Statistics',
-        icon: <TrendingUpOutline />,
-        activeIcon: <TrendingUp />,
-        href: '#',
-      },
-      {
-        id: 'favorites',
-        label: 'Favorites',
-        icon: <BookmarkOutline />,
-        activeIcon: <Bookmark />,
-        href: '#',
-      },
-    ],
-    logout: {
-      id: 'logout',
-      label: 'LogOut',
-      icon: <LogOutOutline />,
-      activeIcon: <LogOut />,
-      href: '#',
-    },
-    activeItemId: null,
-    onItemClick: id => console.log('Item clicked:', id),
-  },
+  argTypes: {},
 }
+
+const items: SidebarItemType[] = [
+  {
+    id: 'feed',
+    text: 'Feed',
+    defaultIcon: <HomeOutline />,
+    activeIcon: <Home />,
+    href: '#home',
+  },
+  {
+    id: 'create',
+    text: 'Create',
+    defaultIcon: <PlusSquareOutline />,
+    activeIcon: <PlusSquare />,
+    href: '#create',
+  },
+  {
+    id: 'profile',
+    text: 'My Profile',
+    defaultIcon: <PersonOutline />,
+    activeIcon: <Person />,
+    href: '#profile',
+  },
+  {
+    id: 'message',
+    text: 'Messages',
+    defaultIcon: <MessageCircleOutline />,
+    activeIcon: <MessageCircle />,
+    href: '#message',
+  },
+  {
+    id: 'search',
+    text: 'Search',
+    defaultIcon: <SearchOutline />,
+    activeIcon: <Search />,
+    href: '#search',
+    withSeparator: true,
+  },
+  {
+    id: 'statistics',
+    text: 'Statistics',
+    defaultIcon: <TrendingUpOutline />,
+    activeIcon: <TrendingUp />,
+    href: '#statistics',
+    isDisabled: true,
+  },
+  {
+    id: 'favorites',
+    text: 'Favorites',
+    defaultIcon: <BookmarkOutline />,
+    activeIcon: <Bookmark />,
+    href: '#favorites',
+  },
+]
 
 export default meta
 
 type Story = StoryObj<typeof Sidebar>
 
-export const Default: Story = {}
-
-export const WithDisableIcons: Story = {
-  args: {
-    items: [
-      {
-        id: 'home',
-        label: 'Home',
-        icon: <HomeOutline />,
-        activeIcon: <Home />,
-        href: '#',
-        disabled: true,
-      },
-      {
-        id: 'create',
-        label: 'Create',
-        icon: <PlusSquareOutline />,
-        activeIcon: <PlusSquare />,
-        href: '#',
-      },
-      {
-        id: 'profile',
-        label: 'My Profile',
-        icon: <PersonOutline />,
-        activeIcon: <Person />,
-        href: '#',
-      },
-      {
-        id: 'message',
-        label: 'Messages',
-        icon: <MessageCircleOutline />,
-        activeIcon: <MessageCircle />,
-        href: '#',
-      },
-      {
-        id: 'search',
-        label: 'Search',
-        icon: <SearchOutline />,
-        activeIcon: <Search />,
-        href: '#',
-      },
-      {
-        id: 'statistics',
-        label: 'Statistics',
-        icon: <TrendingUpOutline />,
-        activeIcon: <TrendingUp />,
-        href: '#',
-      },
-      {
-        id: 'favorites',
-        label: 'Favorites',
-        icon: <BookmarkOutline />,
-        activeIcon: <Bookmark />,
-        href: '#',
-      },
-    ],
-    logout: {
-      id: 'logout',
-      label: 'LogOut',
-      icon: <LogOutOutline />,
-      activeIcon: <LogOut />,
-      href: '#',
-    },
-  },
-  parameters: {
-    pseudo: { hover: false },
+export const BasicStructure: Story = {
+  render: () => {
+    return (
+      <Sidebar>
+        <nav className={s.sidebarNav}>
+          <ul className={s.list}>
+            {items.map(item => (
+              <SidebarItem as={Link} key={item.id} item={item} href={item.href} />
+            ))}
+          </ul>
+        </nav>
+        <div style={{ marginTop: '120px', marginLeft: '60px' }}>
+          <Button variant={'withIcon'} style={{ padding: 0 }}>
+            <LogOut />
+            <Typography as={'span'} style={{ color: 'inherit' }}>
+              Log Out
+            </Typography>
+          </Button>
+        </div>
+      </Sidebar>
+    )
   },
 }
 
 export const InteractiveExample: Story = {
-  render: function Render(args) {
-    const [activeId, setActiveId] = React.useState(args.activeItemId)
+  render: () => {
+    const [currentPath, setCurrentPath] = useState<string>('#profile')
+
+    const onItemClickHandler = (path: string) => {
+      setCurrentPath(path)
+    }
 
     return (
-      <Sidebar
-        {...args}
-        activeItemId={activeId}
-        onItemClick={id => {
-          setActiveId(id)
-          args.onItemClick?.(id)
-        }}
-      />
+      <Sidebar>
+        <nav className={s.sidebarNav}>
+          <ul className={s.list}>
+            {items.map(item => (
+              <SidebarItem
+                as={Link}
+                key={item.id}
+                item={item}
+                isActive={currentPath === item.href}
+                onItemClick={onItemClickHandler}
+                href={item.href}
+              />
+            ))}
+          </ul>
+        </nav>
+        <div style={{ marginTop: '120px', marginLeft: '60px' }}>
+          <Button variant={'withIcon'} style={{ padding: 0 }}>
+            <LogOut />
+            <Typography as={'span'} style={{ color: 'inherit' }}>
+              Log Out
+            </Typography>
+          </Button>
+        </div>
+      </Sidebar>
     )
   },
 }

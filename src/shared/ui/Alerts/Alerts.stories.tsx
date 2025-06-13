@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Alert } from './Alerts'
 import { useState } from 'react'
 import * as ToastPrimitive from '@radix-ui/react-toast'
-import { Button, Typography } from '@/shared/ui'
+import { Alert, Button, Typography } from '@/shared/ui'
 
 // Создаем декоратор для оборачивания всех сторисов в ToastProvider
 const withToastProvider = (Story: any) => (

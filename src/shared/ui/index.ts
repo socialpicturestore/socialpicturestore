@@ -11,6 +11,7 @@ export * from './Checkbox/Checkbox'
 export * from './Recaptcha/Recaptcha'
 export * from './Scroll/Scroll'
 export * from './Sidebar/Sidebar'
+export * from './Sidebar/SidebarItem'
 export * from './DatePicker/DatePicker'
 export * from './TextArea/TextArea'
-
+export * from './Modal/Modal'

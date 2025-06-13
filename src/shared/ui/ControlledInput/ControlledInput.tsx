@@ -27,9 +27,7 @@ export const ControlledInput = <T extends FieldValues>({
     rules,
     shouldUnregister,
   })
-
-  console.log(error)
-
+  console.log('error:', error)
   return (
     <Input
       {...props}

@@ -3,7 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  //   height: 100%;
+
+  margin-top: 35px;
 
   & > h1 {
     margin-bottom: 19px;
@@ -15,5 +16,6 @@
 
   & > button {
     margin-bottom: 72px;
+    width: 182px;
   }
 }

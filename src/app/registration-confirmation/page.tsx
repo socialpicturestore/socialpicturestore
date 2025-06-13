@@ -1,5 +1,5 @@
 import { CongratulationsSection } from '@/widgets/congratulations-section'
-import { redirect } from 'next/navigation';
+import { redirect } from 'next/navigation'
 
 const page = async ({
   searchParams,

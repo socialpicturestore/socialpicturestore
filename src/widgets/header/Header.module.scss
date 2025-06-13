@@ -51,7 +51,9 @@
   align-items: center;
   margin-left: 36px;
 
-  & > button {
+  & > button,
+  a {
     width: 100px;
+    padding: 6px 20px;
   }
 }

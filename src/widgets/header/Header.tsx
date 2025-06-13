@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import s from './Header.module.scss'
 import { Button, SelectBox, Typography } from '@/shared/ui'
 import { BellOutlineIcon, FlagRussia, FlagUnitedKingdom } from '@/shared/assets/icons'
@@ -35,7 +37,9 @@ export const Header = ({ is_auth = false }: { is_auth?: boolean }) => {
 
           {!is_auth && (
             <div className={s.buttonsContainer}>
-              <Button variant="text">Log in</Button>
+              <Button variant="text" asChild>
+                <Link href="/login">Log in</Link>
+              </Button>
               <Button asChild>
                 <Link href="/sign-up">Sign up</Link>
               </Button>

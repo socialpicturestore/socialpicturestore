@@ -132,4 +132,7 @@
 
 .inputErrorMessage {
   color: $color-danger-500;
+  min-height: 28px;
+  display: block;
+  transition: color 0.2s;
 }

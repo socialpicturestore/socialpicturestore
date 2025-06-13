@@ -111,17 +111,15 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         )}
       </div>
 
-      {error && (
-        <Typography
-          as="span"
-          id={`${inputId}-error`}
-          role="alert"
-          variant="regularText14"
-          className={styles.inputErrorMessage}
-        >
-          {error}
-        </Typography>
-      )}
+      <Typography
+        as="span"
+        id={`${inputId}-error`}
+        role="alert"
+        variant="regularText14"
+        className={styles.inputErrorMessage}
+      >
+        {error ?? '\u00A0'}
+      </Typography>
     </div>
   )
 })

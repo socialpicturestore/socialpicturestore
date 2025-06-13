@@ -14,4 +14,6 @@ export * from './Sidebar/Sidebar'
 export * from './Sidebar/SidebarItem'
 export * from './DatePicker/DatePicker'
 export * from './TextArea/TextArea'
+export * from './Loader/Loader'
 export * from './Modal/Modal'
+

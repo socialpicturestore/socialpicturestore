@@ -16,6 +16,7 @@ export type CheckboxProps = {
   onChange?: (checked: boolean) => void
   required?: boolean
   indent?: boolean
+  error?: string
 } & ComponentPropsWithoutRef<typeof CheckboxRadix.Root>
 
 const Checkbox = forwardRef<ComponentRef<typeof CheckboxRadix.Root>, CheckboxProps>(

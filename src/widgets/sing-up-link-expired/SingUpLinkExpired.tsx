@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import s from './SingUpLinkExpired.module.scss'
-import { Button, Input, Typography } from '@/shared/ui'
+import { Button, Typography } from '@/shared/ui'
 import { LinkExpiredIcon } from '@/shared/assets/icons'
 import { useSignUpEmailResendMutation } from '@/features/auth'
 import { ControlledInput } from '@/shared/ui/ControlledInput'

@@ -40,8 +40,7 @@ export const ControlledCheckbox = <T extends FieldValues>({
     <Checkbox
       {...checkboxProps}
       checked={value}
-      // error={error?.message}
-      // errorMessage={error?.message}
+      error={error?.message}
       onCheckedChange={onChange}
       {...field}
     />

@@ -27,11 +27,12 @@ export const ControlledInput = <T extends FieldValues>({
     rules,
     shouldUnregister,
   })
-  console.log('error:', error)
+
   return (
     <Input
       {...props}
       onBlur={onBlur}
+      error={error?.message}
       onChange={onChange}
       ref={ref}
       value={value ?? ''}

@@ -21,10 +21,10 @@ const page = () => {
   useEffect(() => {
     const checkConfirmationCode = async () => {
       try {
-        const res = await signUpConfirm({ confirmationCode })
-        console.log(res)
+        await signUpConfirm({ confirmationCode }).unwrap()
       } catch (err) {
-        console.log(err)
+        console.log('error', err)
+        setIsLinkExpired(true)
       } finally {
         setIsLoading(false)
       }
@@ -35,7 +35,7 @@ const page = () => {
 
   //При загрузке отображается loader, по завершению загрузки отображает одно из двух окон: "Успешная регистрация" или "Ссылка протухла"
   return isLoading ? (
-    <Loader />
+    <Loader fullScreen />
   ) : !isLinkExpired ? (
     <CongratulationsSection />
   ) : (

@@ -16,11 +16,11 @@ export const Logout = ({ onLogoutAction, className }: Props) => {
 
   const textContent: ReactNode = (
     <>
-      Are you really want to log out of your account
+      Are you really want to log out of your account “
       <Typography as={'span'} variant={'boldText16'}>
-        “{data?.email}”
+        {data?.email}
       </Typography>
-      ?
+      ”?
     </>
   )
   return (

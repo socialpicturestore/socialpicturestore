@@ -25,6 +25,7 @@ export const ConfirmationModal = ({
     <Modal
       open={isOpenModal}
       closeButton
+      separator
       modalTitle={modalTitle}
       onClose={() => setIsOpenModal(false)}
       contentClassName={s.contentWrapper}

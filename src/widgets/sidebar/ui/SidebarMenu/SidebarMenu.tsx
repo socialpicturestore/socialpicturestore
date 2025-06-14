@@ -84,11 +84,9 @@ export const SidebarMenu = () => {
 
   const handleLogout = async () => {
     try {
-      debugger
       await logout().unwrap()
       router.push('/login')
     } catch (err) {
-      debugger
       console.error('error on logout: ', err)
     }
   }

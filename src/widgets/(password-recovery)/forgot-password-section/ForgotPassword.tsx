@@ -17,8 +17,9 @@ import { useSearchParams } from 'next/navigation'
 export const ForgotPassword = () => {
   const searchParams = useSearchParams()
   const redirect = searchParams.get('redirect-from-link-expired')
-  const email = searchParams.get('email')
+  const emailFromURL = searchParams.get('email')
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [email, setEmail] = useState<string | null>(null)
   const { register, handleSubmit, setValue, reset } = useForm<ForgotPasswordFormData>()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -26,6 +27,7 @@ export const ForgotPassword = () => {
 
   useEffect(() => {
     if (redirect) {
+      setEmail(emailFromURL)
       setIsModalOpen(true)
     }
   }, [])
@@ -38,6 +40,8 @@ export const ForgotPassword = () => {
         baseUrl: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/'}auth/password-recovery`,
       }).unwrap()
       setErrorMessage(null)
+      setEmail(data.email)
+      setIsModalOpen(true)
       reset()
     } catch (error) {
       setErrorMessage((error as ErrorMessage).data.messages[0].message)

@@ -11,7 +11,7 @@ import Modal from '@/shared/ui/Modal/Modal'
 import {
   ErrorMessage,
   ForgotPasswordFormData,
-} from '@/widgets/(password-recovery)/types/recovery.types'
+} from '@/widgets/password-recovery/types/recovery.types'
 import { useSearchParams } from 'next/navigation'
 
 export const ForgotPassword = () => {

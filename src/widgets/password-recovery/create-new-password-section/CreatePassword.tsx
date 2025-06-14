@@ -10,7 +10,7 @@ import { useSearchParams } from 'next/navigation'
 import {
   CreatePasswordFormData,
   ErrorMessage,
-} from '@/widgets/(password-recovery)/types/recovery.types'
+} from '@/widgets/password-recovery/types/recovery.types'
 
 export const CreatePassword = () => {
   const searchParams = useSearchParams()

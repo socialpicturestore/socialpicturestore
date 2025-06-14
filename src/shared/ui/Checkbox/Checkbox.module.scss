@@ -2,7 +2,8 @@
 
 .box {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
 }
 
 .text {
@@ -120,4 +121,8 @@
   &:active:not(.disabled) {
     background-color: $color-dark-100;
   }
+}
+
+span.inputErrorMessage {
+  color: $color-danger-500;
 }

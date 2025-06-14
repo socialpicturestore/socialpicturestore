@@ -35,7 +35,7 @@ export const ControlledCheckbox = <T extends FieldValues>({
     rules,
     shouldUnregister,
   })
-  console.log(error)
+
   return (
     <Checkbox
       {...checkboxProps}

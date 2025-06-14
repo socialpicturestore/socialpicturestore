@@ -1,3 +1,8 @@
+import { z } from 'zod'
+import { createPasswordSchema } from '@/widgets/password-recovery/create-new-password-section/schema'
+
+export type CreatePasswordFormData = z.infer<typeof createPasswordSchema>
+
 type MessagesType = {
   field: string
   message: string
@@ -18,9 +23,4 @@ export type ForgotPasswordFormData = {
   email: string
   recaptcha: string
   baseUrl: string
-}
-
-export type CreatePasswordFormData = {
-  password: string
-  confirmPassword: string
 }

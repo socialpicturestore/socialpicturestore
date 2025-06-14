@@ -7,10 +7,9 @@ import { useForm } from 'react-hook-form'
 
 import { useCreateNewPasswordMutation, useCheckRecoveryCodeMutation } from '@/features/auth'
 import { useSearchParams } from 'next/navigation'
-import {
-  CreatePasswordFormData,
-  ErrorMessage,
-} from '@/widgets/password-recovery/types/recovery.types'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { createPasswordSchema } from '@/widgets/password-recovery/create-new-password-section/schema'
+import { CreatePasswordFormData, ErrorMessage } from '@/widgets/password-recovery/types'
 
 export const CreatePassword = () => {
   const searchParams = useSearchParams()
@@ -23,10 +22,8 @@ export const CreatePassword = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm<CreatePasswordFormData>()
-  const passwordWatcher = watch('password')
+  } = useForm<CreatePasswordFormData>({ resolver: zodResolver(createPasswordSchema) })
   const [createNewPassword] = useCreateNewPasswordMutation()
   const [checkRecoveryCode] = useCheckRecoveryCodeMutation()
 
@@ -72,17 +69,15 @@ export const CreatePassword = () => {
           <Input
             variant={'password'}
             {...register('password')}
-            error={errorMessage || undefined}
+            error={errorMessage || errors.password?.message}
             label={'New Password'}
             placeholder={'Enter new password'}
           ></Input>
 
           <Input
             variant={'password'}
-            {...register('confirmPassword', {
-              validate: value => value === passwordWatcher || 'The passwords must match',
-            })}
-            error={errors.confirmPassword?.message || undefined}
+            {...register('confirmPassword')}
+            error={errors.confirmPassword?.message}
             label={'Password Confirmation'}
             placeholder={'Confirm new password'}
           ></Input>

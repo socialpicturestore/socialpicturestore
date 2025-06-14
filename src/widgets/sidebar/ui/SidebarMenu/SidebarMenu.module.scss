@@ -1,0 +1,41 @@
+@use '../../../../shared/styles/index.scss' as *;
+
+.stickyItem {
+  margin-top: 180px;
+  align-self: flex-start;
+  margin-left: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > button {
+    padding: 0;
+  }
+
+  &.active {
+    color: $color-accent-700;
+
+    &:visited {
+      color: $color-accent-500;
+    }
+  }
+
+  &:visited {
+    color: $color-light-100;
+  }
+
+  &:hover {
+    color: $color-accent-100;
+  }
+
+  &:focus-visible {
+    border-radius: 2px;
+    outline: none;
+    box-shadow: 0 0 0 2px $color-accent-700;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    color: $color-dark-100;
+  }
+}

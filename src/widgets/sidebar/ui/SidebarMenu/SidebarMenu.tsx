@@ -85,7 +85,7 @@ export const SidebarMenu = () => {
   const handleLogout = async () => {
     try {
       await logout().unwrap()
-      router.push('/login')
+      router.push(PATHS.AUTH.LOGIN)
     } catch (err) {
       console.error('error on logout: ', err)
     }

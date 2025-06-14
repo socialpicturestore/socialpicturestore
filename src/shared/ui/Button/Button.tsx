@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, forwardRef, ReactNode } from 'react'
 import clsx from 'classnames'
 import s from './Button.module.scss'
 import { Slot } from '@radix-ui/react-slot'

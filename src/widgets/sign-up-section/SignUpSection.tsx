@@ -10,7 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { SignUpScheme } from '@/shared/validation/feedback-scheme-creator'
 import Link from 'next/link'
 import { ControlledCheckbox } from '@/shared/ui/controlled-checkbox'
-import Modal from '@/shared/ui/modal/Modal'
+import Modal from '@/shared/ui/Modal/Modal'
 
 export const SignUpSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)

@@ -1,26 +1,9 @@
-'use client'
 import { RegistrationConfirmationSvg } from '@/shared/assets/icons'
-import React, { useEffect } from 'react'
+import React from 'react'
 import s from './CongratulationsSection.module.scss'
 import { Button, Typography } from '@/shared/ui'
-import { useSignUpConfirmMutation } from '@/features/auth'
 
-export const CongratulationsSection = ({ confirmationCode }: { confirmationCode: string }) => {
-  const [signUpConfirm] = useSignUpConfirmMutation()
-
-  useEffect(() => {
-    const checkConfirmationCode = async () => {
-      try {
-        const res = await signUpConfirm({ confirmationCode })
-        console.log(res)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-
-    checkConfirmationCode()
-  }, [])
-
+export const CongratulationsSection = () => {
   return (
     <div className={s.container}>
       <Typography variant="h1" as="h1">

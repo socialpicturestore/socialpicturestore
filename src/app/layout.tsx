@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.scss'
-import { Header } from '@/widgets/header'
 import StoreProvider from '@/app/providers/StoreProvider'
 import Script from 'next/script'
 
@@ -29,10 +28,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${interSans.variable} antialiased`}>
-        <StoreProvider>
-          <Header />
-          {children}
-        </StoreProvider>
+        <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
   )

@@ -12,5 +12,8 @@ export const PATHS = {
   AUTH: {
     LOGIN: '/login',
     SIGN_UP: '/sign-up',
+    FORGOT_PASSWORD: '/forgot-password',
+    PASSWORD_RECOVERY: '/password-recovery',
+    VERIFICATION_LINK_EXPIRED: '/verification-link-expired',
   },
 }

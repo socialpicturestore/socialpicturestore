@@ -10,6 +10,7 @@ import { useSearchParams } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { createPasswordSchema } from '@/widgets/password-recovery/create-new-password-section/schema'
 import { CreatePasswordFormData, ErrorMessage } from '@/widgets/password-recovery/types'
+import { PATHS } from '@/shared/const/path/paths'
 
 export const CreatePassword = () => {
   const searchParams = useSearchParams()
@@ -34,7 +35,7 @@ export const CreatePassword = () => {
           recoveryCode: code || '',
         }).unwrap()
       } catch (e) {
-        router.push(`/auth/verification-link-expired?email=${email}`)
+        router.push(`${PATHS.AUTH.VERIFICATION_LINK_EXPIRED}?email=${email}`)
       } finally {
         setIsChecking(false)
       }
@@ -49,7 +50,7 @@ export const CreatePassword = () => {
         recoveryCode: code || '',
       }).unwrap()
       setErrorMessage(null)
-      router.push('sign-in')
+      router.push(`${PATHS.AUTH.LOGIN}`)
     } catch (error) {
       setErrorMessage((error as ErrorMessage).data.messages[0].message)
     }

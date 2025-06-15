@@ -6,6 +6,7 @@ import s from './LinkExpired.module.scss'
 import LinkExpiredSVG from '@/shared/assets/icons/LinkExpiredSVG'
 import { usePasswordRecoveryResendMutation } from '@/features/auth'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { PATHS } from '@/shared/const/path/paths'
 
 export const LinkExpired = () => {
   const searchParams = useSearchParams()
@@ -16,10 +17,10 @@ export const LinkExpired = () => {
   const onSubmit = async () => {
     try {
       await passwordResend({
-        baseUrl: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/'}auth/password-recovery`,
+        baseUrl: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/'}${PATHS.AUTH.PASSWORD_RECOVERY}`,
         email: email || '',
       }).unwrap()
-      router.push(`/auth/forgot-password?redirect-from-link-expired=true&email=${email}`)
+      router.push(`${PATHS.AUTH.FORGOT_PASSWORD}?redirect-from-link-expired=true&email=${email}`)
     } catch (e) {
       console.log(e)
     }

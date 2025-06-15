@@ -13,6 +13,7 @@ import { useSearchParams } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ErrorMessage, ForgotPasswordFormData } from '@/widgets/password-recovery/types'
 import { createForgotPasswordSchema } from './schema'
+import { PATHS } from '@/shared/const/path/paths'
 
 export const ForgotPassword = () => {
   const searchParams = useSearchParams()
@@ -46,7 +47,7 @@ export const ForgotPassword = () => {
       await triggerRecovery({
         email: data.email,
         recaptcha: data.recaptcha,
-        baseUrl: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/'}auth/password-recovery`,
+        baseUrl: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/'}${PATHS.AUTH.PASSWORD_RECOVERY}`,
       }).unwrap()
       setErrorMessage(null)
       setEmail(data.email)

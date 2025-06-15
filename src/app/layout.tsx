@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.scss'
 import StoreProvider from '@/app/providers/StoreProvider'
+import Script from 'next/script'
 
 const interSans = Inter({
   variable: '--font-inter',
@@ -20,6 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://www.google.com/recaptcha/api.js?render=explicit"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className={`${interSans.variable} antialiased`}>
         <StoreProvider>{children}</StoreProvider>
       </body>

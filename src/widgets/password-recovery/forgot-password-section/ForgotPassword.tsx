@@ -8,11 +8,11 @@ import { useForm } from 'react-hook-form'
 
 import { usePasswordRecoveryMutation } from '@/features/auth'
 import Modal from '@/shared/ui/Modal/Modal'
-import {
-  ErrorMessage,
-  ForgotPasswordFormData,
-} from '@/widgets/password-recovery/types/recovery.types'
+
 import { useSearchParams } from 'next/navigation'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { ErrorMessage, ForgotPasswordFormData } from '@/widgets/password-recovery/types'
+import { createForgotPasswordSchema } from './schema'
 
 export const ForgotPassword = () => {
   const searchParams = useSearchParams()
@@ -20,7 +20,15 @@ export const ForgotPassword = () => {
   const emailFromURL = searchParams.get('email')
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [email, setEmail] = useState<string | null>(null)
-  const { register, handleSubmit, setValue, reset } = useForm<ForgotPasswordFormData>()
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    reset,
+    formState: { errors },
+  } = useForm<ForgotPasswordFormData>({
+    resolver: zodResolver(createForgotPasswordSchema),
+  })
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const [triggerRecovery, { isSuccess }] = usePasswordRecoveryMutation()
@@ -32,7 +40,8 @@ export const ForgotPassword = () => {
     }
   }, [])
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: ForgotPasswordFormData) => {
+    console.log('qwerty')
     try {
       await triggerRecovery({
         email: data.email,
@@ -78,7 +87,7 @@ export const ForgotPassword = () => {
         <div className={s.inputEmail}>
           <Input
             {...register('email')}
-            error={errorMessage || undefined}
+            error={errorMessage || errors.email?.message}
             label={'Email'}
             placeholder={'example@example.com'}
           ></Input>
@@ -104,6 +113,11 @@ export const ForgotPassword = () => {
         {!isSuccess && !redirect && (
           <div className={s.recaptcha}>
             <RecaptchaV2 onChange={handleCaptchaVerified} />
+            {errors.recaptcha?.message && (
+              <Typography variant={'regularText14'} className={s.errorParagraph}>
+                {errors.recaptcha?.message}
+              </Typography>
+            )}
           </div>
         )}
       </form>

@@ -54,11 +54,7 @@
   right: 24px;
   color: $color-light-100;
   cursor: pointer;
-
-  svg {
-    display: inline-flex;
-    align-items: center;
-  }
+  border-radius: 4px;
 
   &:hover {
     background: rgba(0, 0, 0, 0.05);

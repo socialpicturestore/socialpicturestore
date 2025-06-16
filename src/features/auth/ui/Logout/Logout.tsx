@@ -2,8 +2,8 @@
 import { Button, Typography } from '@/shared/ui'
 import { LogOut } from '@/shared/assets/icons'
 import { type ReactNode, useState } from 'react'
-import { ConfirmationModal } from '@/entities/confirmationModal/ConfirmationModal'
 import { useMeQuery } from '@/features/auth'
+import { ConfirmationModal } from '@/entities/confirmationModal'
 
 type Props = {
   onLogoutAction: () => void

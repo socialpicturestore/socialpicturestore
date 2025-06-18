@@ -41,7 +41,7 @@
   "include": [
     "src",
     ".next/types/**/*.ts"
-  ]
+, "src/auth.ts"  ]
   // "references": [{ "path": "./tsconfig.node.json" }]
   ,
   "exclude": [

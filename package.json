@@ -15,6 +15,7 @@
     "test": "echo \"No tests available\" && exit 0"
   },
   "dependencies": {
+    "@auth/core": "^0.39.1",
     "@radix-ui/react-checkbox": "^1.2.3",
     "@radix-ui/react-dialog": "^1.1.13",
     "@radix-ui/react-label": "^2.1.4",
@@ -27,6 +28,7 @@
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
     "next": "15.3.1",
+    "next-auth": "5.0.0-beta.28",
     "react": "^19.0.0",
     "react-day-picker": "^9.6.7",
     "react-dom": "^19.0.0",

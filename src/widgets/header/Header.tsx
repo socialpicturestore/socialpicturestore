@@ -1,7 +1,9 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import s from './Header.module.scss'
 import { Button, SelectBox, Typography } from '@/shared/ui'
 import { BellOutlineIcon, FlagRussia, FlagUnitedKingdom } from '@/shared/assets/icons'
+import Link from 'next/link'
 
 const options = [
   { value: 'Russian', icon: <FlagRussia /> },
@@ -9,6 +11,8 @@ const options = [
 ]
 
 export const Header = ({ is_auth = false }: { is_auth?: boolean }) => {
+  const [lang, setLang] = useState(options[0].value)
+
   return (
     <div className={s.wrapper}>
       <div className={s.container}>
@@ -23,12 +27,19 @@ export const Header = ({ is_auth = false }: { is_auth?: boolean }) => {
             </Button>
           )}
 
-          <SelectBox options={options} className={s.select} />
+          <SelectBox
+            options={options}
+            className={s.select}
+            value={lang}
+            onChange={value => setLang(value)}
+          />
 
           {!is_auth && (
             <div className={s.buttonsContainer}>
               <Button variant="text">Log in</Button>
-              <Button compact>Sign up</Button>
+              <Button asChild>
+                <Link href="/sign-up">Sign up</Link>
+              </Button>
             </div>
           )}
         </div>

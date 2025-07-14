@@ -12,5 +12,6 @@ export const PATHS = {
   AUTH: {
     LOGIN: '/login',
     SIGN_UP: '/sign-up',
+    REGISTRATION_CONFIRMATION: '/registration-confirmation',
   },
 }

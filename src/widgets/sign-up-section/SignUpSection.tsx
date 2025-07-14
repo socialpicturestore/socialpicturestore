@@ -11,12 +11,13 @@ import { SignUpScheme } from '@/shared/validation/feedback-scheme-creator'
 import Link from 'next/link'
 import { ControlledCheckbox } from '@/shared/ui/controlled-checkbox'
 import Modal from '@/shared/ui/Modal/Modal'
+import { PATHS } from '@/shared/const/path/paths'
 
 export const SignUpSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [registration] = useSignUpMutation()
 
-  const { control, handleSubmit, watch } = useForm({
+  const { control, handleSubmit, watch, reset } = useForm({
     defaultValues: {
       userName: '',
       email: '',
@@ -24,8 +25,8 @@ export const SignUpSection = () => {
       passwordConfirmation: '',
       checked: false,
     },
-    mode: 'onChange',
-    reValidateMode: 'onSubmit',
+    mode: 'onTouched',
+    reValidateMode: 'onChange',
     resolver: zodResolver(SignUpScheme()),
   })
 
@@ -35,7 +36,7 @@ export const SignUpSection = () => {
         userName: data.userName,
         email: data.email,
         password: data.password,
-        baseUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/registration-confirmation`,
+        baseUrl: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/'}${PATHS.AUTH.REGISTRATION_CONFIRMATION}`,
       }).unwrap()
       console.log(res)
       setIsModalOpen(true)
@@ -46,6 +47,10 @@ export const SignUpSection = () => {
   })
 
   const email = watch('email')
+  const setIsOpenModel = () => {
+    setIsModalOpen(false)
+    reset()
+  }
 
   return (
     <Card>
@@ -106,15 +111,16 @@ export const SignUpSection = () => {
       <Modal
         modalTitle={'Email Sent'}
         open={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={setIsOpenModel}
         closeButton={true}
+        separator
       >
         <Typography variant={'regularText16'}>
           We have sent a link to confirm your email to {email}
         </Typography>
 
         <div className={s.buttonContainer}>
-          <Button onClick={() => setIsModalOpen(false)} className={s.modalButton}>
+          <Button onClick={setIsOpenModel} className={s.modalButton}>
             OK
           </Button>
         </div>

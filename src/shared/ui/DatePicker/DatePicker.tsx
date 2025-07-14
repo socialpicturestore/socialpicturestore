@@ -105,6 +105,7 @@ export const DatePicker = ({
           aria-labelledby={headerId}
           className={styles.calendarWrapper}
         >
+          {/* @ts-ignore */}
           <DayPicker
             showOutsideDays
             locale={enGB}

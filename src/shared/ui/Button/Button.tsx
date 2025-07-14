@@ -1,11 +1,12 @@
-import { ComponentPropsWithoutRef, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, forwardRef, ReactNode } from 'react'
 import clsx from 'classnames'
 import s from './Button.module.scss'
 import { Slot } from '@radix-ui/react-slot'
 
 export type ButtonProps = {
   asChild?: boolean
-  variant?: 'primary' | 'secondary' | 'outline' | 'text' | 'withIcon'
+  children: ReactNode
+  variant?: 'primary' | 'secondary' | 'outline' | 'text' | 'withIcon' | 'link'
   fullWidth?: boolean
   isWithIcon?: boolean
   compact?: boolean
@@ -30,14 +31,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         ref={ref}
-        className={clsx(
-          s.button,
-          s[variant],
-          isWithIcon && s.isWithIcon,
-          fullWidth && s.fullWidth,
-          compact && s.compact,
-          className
-        )}
+        className={clsx(s.button, s[variant], fullWidth && s.fullWidth, className)}
         {...rest}
       />
     )

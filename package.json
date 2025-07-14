@@ -15,11 +15,8 @@
     "test": "echo \"No tests available\" && exit 0"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@auth/core": "^0.39.1",
-=======
     "@hookform/resolvers": "^5.0.1",
->>>>>>> 73f92d9c213c87ee68c9eb42729b7255730957fc
     "@radix-ui/react-checkbox": "^1.2.3",
     "@radix-ui/react-icons": "^1.3.2",
     "@radix-ui/react-dialog": "^1.1.13",

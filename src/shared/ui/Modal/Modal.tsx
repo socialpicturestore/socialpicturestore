@@ -6,6 +6,7 @@ import s from './Modal.module.scss'
 import { Close } from '@/shared/assets/icons'
 import { Button } from '@/shared/ui'
 import clsx from 'classnames'
+import { DialogClose } from '@/shared/ui/Modal/DialogClose'
 
 type Props = {
   open: boolean
@@ -44,11 +45,11 @@ const Modal = ({
           <div className={clsx(s.header, headerClassName)}>
             <Dialog.Title className={clsx(s.title, modalTitleClassName)}>{modalTitle}</Dialog.Title>
             {closeButton && (
-              <Dialog.Close asChild>
+              <DialogClose asChild>
                 <Button variant={'withIcon'} className={closeButtonClassName} aria-label="Close">
                   <Close />
                 </Button>
-              </Dialog.Close>
+              </DialogClose>
             )}
           </div>
           {separator && <div className={clsx(s.separator, separatorClassName)} />}
@@ -59,4 +60,4 @@ const Modal = ({
   )
 }
 
-export default Modal
+export { Modal }

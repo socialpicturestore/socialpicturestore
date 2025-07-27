@@ -1,6 +1,6 @@
 'use client'
-import { Button, Sidebar } from '@/shared/ui'
-import { usePathname } from 'next/navigation'
+import { Sidebar } from '@/shared/ui'
+import { usePathname, useRouter } from 'next/navigation'
 import { SidebarMenuList } from '@/widgets/sidebar/ui/SidebarMenuList/SidebarMenuList'
 import {
   Bookmark,
@@ -9,7 +9,6 @@ import {
   HomeOutline,
   Layers,
   LayersOutline,
-  LogOut,
   MessageCircle,
   MessageCircleOutline,
   PlusSquare,
@@ -21,6 +20,8 @@ import {
 } from '@/shared/assets/icons'
 import type { SidebarItemType } from '@/widgets/sidebar/model/types/sidebar.types'
 import { PATHS } from '@/shared/const/path/paths'
+import { Logout, useLogoutMutation } from '@/features/auth'
+import s from './SidebarMenu.module.scss'
 
 const sidebarItems: SidebarItemType[] = [
   {
@@ -78,14 +79,22 @@ const sidebarItems: SidebarItemType[] = [
 
 export const SidebarMenu = () => {
   const currentPath = usePathname()
+  const [logout] = useLogoutMutation()
+  const router = useRouter()
+
+  const handleLogout = async () => {
+    try {
+      await logout().unwrap()
+      router.push(PATHS.AUTH.LOGIN)
+    } catch (err) {
+      console.error('error on logout: ', err)
+    }
+  }
 
   return (
     <Sidebar>
       <SidebarMenuList items={sidebarItems} path={currentPath} />
-      <Button variant={'withIcon'} style={{ marginTop: '180px' }}>
-        <LogOut />
-        Log Out
-      </Button>
+      <Logout onLogoutAction={handleLogout} className={s.stickyItem} />
     </Sidebar>
   )
 }
